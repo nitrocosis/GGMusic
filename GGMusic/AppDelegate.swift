@@ -18,18 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         dataController.load()
         let navigationController = window?.rootViewController as! UINavigationController
         let LoginVC = navigationController.topViewController as! LoginVC
-        LoginVC.tabBarController = dataController
+     //   LoginVC.dataController = dataController
         return true
-    }
-    
-    func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
-        print("success", session)
-    }
-    func sessionManager(manager: SPTSessionManager, didFailWith error: Error) {
-        print("fail", error)
-    }
-    func sessionManager(manager: SPTSessionManager, didRenew session: SPTSession) {
-        print("renewed", session)
     }
 
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2913E93C22BC86E2009BD4F8 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2913E93B22BC86E2009BD4F8 /* SpotifyiOS.framework */; };
 		291BF6A822BA824E009ACCF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291BF6A722BA824E009ACCF8 /* AppDelegate.swift */; };
 		291BF6AA22BA824E009ACCF8 /* MusicPlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291BF6A922BA824E009ACCF8 /* MusicPlayerVC.swift */; };
 		291BF6AD22BA824E009ACCF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 291BF6AB22BA824E009ACCF8 /* Main.storyboard */; };
@@ -15,7 +16,6 @@
 		291BF6BB22BACF4B009ACCF8 /* SpotifyClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291BF6BA22BACF4B009ACCF8 /* SpotifyClient.swift */; };
 		291BF6BD22BACF5C009ACCF8 /* SpotifyClientSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291BF6BC22BACF5C009ACCF8 /* SpotifyClientSupport.swift */; };
 		291BF6BF22BACF63009ACCF8 /* SpotifyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291BF6BE22BACF63009ACCF8 /* SpotifyConstants.swift */; };
-		291BF6C222BAD23C009ACCF8 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 291BF6C122BAD23C009ACCF8 /* SpotifyiOS.framework */; };
 		291BF6C722BAD358009ACCF8 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291BF6C622BAD358009ACCF8 /* DataController.swift */; };
 		291BF6C922BAD3C4009ACCF8 /* TableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291BF6C822BAD3C4009ACCF8 /* TableVC.swift */; };
 		291BF6CB22BAD3E8009ACCF8 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291BF6CA22BAD3E8009ACCF8 /* LoginVC.swift */; };
@@ -24,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2913E93B22BC86E2009BD4F8 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyiOS.framework; sourceTree = "<group>"; };
 		291BF6A422BA824E009ACCF8 /* GGMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GGMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		291BF6A722BA824E009ACCF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		291BF6A922BA824E009ACCF8 /* MusicPlayerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerVC.swift; sourceTree = "<group>"; };
@@ -34,13 +35,12 @@
 		291BF6BA22BACF4B009ACCF8 /* SpotifyClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyClient.swift; sourceTree = "<group>"; };
 		291BF6BC22BACF5C009ACCF8 /* SpotifyClientSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyClientSupport.swift; sourceTree = "<group>"; };
 		291BF6BE22BACF63009ACCF8 /* SpotifyConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyConstants.swift; sourceTree = "<group>"; };
-		291BF6C122BAD23C009ACCF8 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyiOS.framework; path = "../../../Downloads/ios-sdk-1.0.2/SpotifyiOS.framework"; sourceTree = "<group>"; };
 		291BF6C622BAD358009ACCF8 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		291BF6C822BAD3C4009ACCF8 /* TableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableVC.swift; sourceTree = "<group>"; };
 		291BF6CA22BAD3E8009ACCF8 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		291BF6CC22BAD5CC009ACCF8 /* CollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
 		291BF6CE22BAD61D009ACCF8 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
-		291BF6D022BAE65F009ACCF8 /* GGMusic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GGMusic-Bridging-Header.h"; sourceTree = "<group>"; };
+		291BF6D122BBD4B0009ACCF8 /* GGMusic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GGMusic-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,19 +48,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				291BF6C222BAD23C009ACCF8 /* SpotifyiOS.framework in Frameworks */,
+				2913E93C22BC86E2009BD4F8 /* SpotifyiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2913E93822BC82FF009BD4F8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2913E93B22BC86E2009BD4F8 /* SpotifyiOS.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
 		291BF69B22BA824E009ACCF8 = {
 			isa = PBXGroup;
 			children = (
+				291BF6D122BBD4B0009ACCF8 /* GGMusic-Bridging-Header.h */,
 				291BF6A622BA824E009ACCF8 /* GGMusic */,
 				291BF6A522BA824E009ACCF8 /* Products */,
-				291BF6C022BAD23C009ACCF8 /* Frameworks */,
+				2913E93822BC82FF009BD4F8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,7 +84,6 @@
 		291BF6A622BA824E009ACCF8 /* GGMusic */ = {
 			isa = PBXGroup;
 			children = (
-				291BF6D022BAE65F009ACCF8 /* GGMusic-Bridging-Header.h */,
 				291BF6A722BA824E009ACCF8 /* AppDelegate.swift */,
 				291BF6B922BACF32009ACCF8 /* Spotify */,
 				291BF6C522BAD32B009ACCF8 /* Controller */,
@@ -93,14 +101,6 @@
 				291BF6BE22BACF63009ACCF8 /* SpotifyConstants.swift */,
 			);
 			path = Spotify;
-			sourceTree = "<group>";
-		};
-		291BF6C022BAD23C009ACCF8 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				291BF6C122BAD23C009ACCF8 /* SpotifyiOS.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		291BF6C322BAD2E1009ACCF8 /* Model */ = {
@@ -362,15 +362,24 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4VH6W5AH99;
-				INFOPLIST_FILE = GGMusic/Info.plist;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
+				INFOPLIST_FILE = GGMusic/Model/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "-ObjC";
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sarahestrellado.dicee.GGMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "GGMusic-Bridging-Header.h";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -382,15 +391,24 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4VH6W5AH99;
-				INFOPLIST_FILE = GGMusic/Info.plist;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
+				INFOPLIST_FILE = GGMusic/Model/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				OTHER_LDFLAGS = "-ObjC";
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sarahestrellado.dicee.GGMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "GGMusic-Bridging-Header.h";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
