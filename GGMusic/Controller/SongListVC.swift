@@ -1,5 +1,5 @@
 //
-//  CollectionVC.swift
+//  TableVC.swift
 //  GGMusic
 //
 //  Created by Sarah Rebecca Estrellado on 6/19/19.
@@ -7,3 +7,4 @@
 //
 
 import Foundation
+//Shuffle and play buttons. list of songs in playlist. search bar allows you to search for spotify songs and add to current playlist.

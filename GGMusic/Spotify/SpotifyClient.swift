@@ -13,4 +13,8 @@ class SpotifyClient {
     let SpotifyClientID = "e59bc86bd19545b38a185d3beefa34de"
     let SpotifyRedirectURL = URL(string: "spotify-ios-quick-start://spotify-login-callback")!
     
+    lazy var configuration = SPTConfiguration(
+        clientID: SpotifyClientID,
+        redirectURL: SpotifyRedirectURL
+    )
 }

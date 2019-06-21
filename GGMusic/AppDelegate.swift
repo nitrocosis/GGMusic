@@ -16,10 +16,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         dataController.load()
-        let navigationController = window?.rootViewController as! UINavigationController
-        let LoginVC = navigationController.topViewController as! LoginVC
-     //   LoginVC.dataController = dataController
+       // let navigationController = window?.rootViewController as! UINavigationController
+       // let loginVC = navigationController.topViewController as! LoginVC
+     //    loginVC.dataController = dataController
         return true
+    }
+    
+    func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
+        print("success", session)
+    }
+    func sessionManager(manager: SPTSessionManager, didFailWith error: Error) {
+        print("fail", error)
+    }
+    func sessionManager(manager: SPTSessionManager, didRenew session: SPTSession) {
+        print("renewed", session)
     }
 
 

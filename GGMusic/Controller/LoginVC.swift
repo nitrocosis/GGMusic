@@ -12,4 +12,18 @@ import CoreData
 
 class LoginVC: UIViewController {
     
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var signUpLabel: UILabel!
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    
+    @IBAction func submit(_ sender: Any) {
+    }
+    
+    @IBAction func signUp(_ sender: Any) {
+    }
+    
 }

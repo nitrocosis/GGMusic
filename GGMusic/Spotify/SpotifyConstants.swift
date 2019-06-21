@@ -11,5 +11,8 @@ import Foundation
 class SpotifyConstants {
     
     struct URLConstants {
+        
+        let ClientID = "e59bc86bd19545b38a185d3beefa34de"
+        let RedirectURL = "spotify-ios-quick-start://spotify-login-callback"
     }
 }

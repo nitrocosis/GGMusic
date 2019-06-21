@@ -17,9 +17,9 @@
 		291BF6BD22BACF5C009ACCF8 /* SpotifyClientSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291BF6BC22BACF5C009ACCF8 /* SpotifyClientSupport.swift */; };
 		291BF6BF22BACF63009ACCF8 /* SpotifyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291BF6BE22BACF63009ACCF8 /* SpotifyConstants.swift */; };
 		291BF6C722BAD358009ACCF8 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291BF6C622BAD358009ACCF8 /* DataController.swift */; };
-		291BF6C922BAD3C4009ACCF8 /* TableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291BF6C822BAD3C4009ACCF8 /* TableVC.swift */; };
+		291BF6C922BAD3C4009ACCF8 /* SongListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291BF6C822BAD3C4009ACCF8 /* SongListVC.swift */; };
 		291BF6CB22BAD3E8009ACCF8 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291BF6CA22BAD3E8009ACCF8 /* LoginVC.swift */; };
-		291BF6CD22BAD5CC009ACCF8 /* CollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291BF6CC22BAD5CC009ACCF8 /* CollectionVC.swift */; };
+		291BF6CD22BAD5CC009ACCF8 /* PlaylistCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291BF6CC22BAD5CC009ACCF8 /* PlaylistCollectionVC.swift */; };
 		291BF6CF22BAD61D009ACCF8 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291BF6CE22BAD61D009ACCF8 /* Error.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,9 +36,9 @@
 		291BF6BC22BACF5C009ACCF8 /* SpotifyClientSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyClientSupport.swift; sourceTree = "<group>"; };
 		291BF6BE22BACF63009ACCF8 /* SpotifyConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyConstants.swift; sourceTree = "<group>"; };
 		291BF6C622BAD358009ACCF8 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
-		291BF6C822BAD3C4009ACCF8 /* TableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableVC.swift; sourceTree = "<group>"; };
+		291BF6C822BAD3C4009ACCF8 /* SongListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListVC.swift; sourceTree = "<group>"; };
 		291BF6CA22BAD3E8009ACCF8 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
-		291BF6CC22BAD5CC009ACCF8 /* CollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionVC.swift; sourceTree = "<group>"; };
+		291BF6CC22BAD5CC009ACCF8 /* PlaylistCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCollectionVC.swift; sourceTree = "<group>"; };
 		291BF6CE22BAD61D009ACCF8 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		291BF6D122BBD4B0009ACCF8 /* GGMusic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GGMusic-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,8 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				291BF6A922BA824E009ACCF8 /* MusicPlayerVC.swift */,
-				291BF6C822BAD3C4009ACCF8 /* TableVC.swift */,
-				291BF6CC22BAD5CC009ACCF8 /* CollectionVC.swift */,
+				291BF6C822BAD3C4009ACCF8 /* SongListVC.swift */,
+				291BF6CC22BAD5CC009ACCF8 /* PlaylistCollectionVC.swift */,
 				291BF6CA22BAD3E8009ACCF8 /* LoginVC.swift */,
 			);
 			path = Controller;
@@ -206,13 +206,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				291BF6AA22BA824E009ACCF8 /* MusicPlayerVC.swift in Sources */,
-				291BF6CD22BAD5CC009ACCF8 /* CollectionVC.swift in Sources */,
+				291BF6CD22BAD5CC009ACCF8 /* PlaylistCollectionVC.swift in Sources */,
 				291BF6C722BAD358009ACCF8 /* DataController.swift in Sources */,
 				291BF6CB22BAD3E8009ACCF8 /* LoginVC.swift in Sources */,
 				291BF6A822BA824E009ACCF8 /* AppDelegate.swift in Sources */,
 				291BF6BB22BACF4B009ACCF8 /* SpotifyClient.swift in Sources */,
 				291BF6BF22BACF63009ACCF8 /* SpotifyConstants.swift in Sources */,
-				291BF6C922BAD3C4009ACCF8 /* TableVC.swift in Sources */,
+				291BF6C922BAD3C4009ACCF8 /* SongListVC.swift in Sources */,
 				291BF6CF22BAD61D009ACCF8 /* Error.swift in Sources */,
 				291BF6BD22BACF5C009ACCF8 /* SpotifyClientSupport.swift in Sources */,
 			);

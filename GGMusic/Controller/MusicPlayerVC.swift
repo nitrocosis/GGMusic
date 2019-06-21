@@ -9,12 +9,13 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    //music player, with option to change background to provided background pictures or upload own background.
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
 
 }
 
