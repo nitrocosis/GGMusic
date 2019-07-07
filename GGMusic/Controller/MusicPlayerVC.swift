@@ -8,10 +8,24 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MusicPlayerVC
+: UIViewController {
     
     //music player, with option to change background to provided background pictures or upload own background.
 
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var progressBar: UIProgressView!
+    @IBOutlet weak var songArtistLabel: UILabel!
+    @IBOutlet weak var songTitleLabel: UILabel!
+    @IBOutlet weak var previousSongButton: UIButton!
+    @IBOutlet weak var playSongButton: UIButton!
+    @IBOutlet weak var nextSongButton: UIButton!
+    @IBOutlet weak var volumeSlider: UISlider!
+    @IBOutlet weak var changeBackgroundButton: UIButton!
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

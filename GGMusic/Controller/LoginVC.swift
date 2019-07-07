@@ -19,11 +19,10 @@ class LoginVC: UIViewController {
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    
     @IBAction func submit(_ sender: Any) {
+        SpotifyClient.sharedInstance().login()
     }
     
     @IBAction func signUp(_ sender: Any) {
     }
-    
 }

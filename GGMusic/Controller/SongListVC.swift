@@ -8,3 +8,7 @@
 
 import Foundation
 //Shuffle and play buttons. list of songs in playlist. search bar allows you to search for spotify songs and add to current playlist.
+
+class SongListVC: UIViewController {
+    
+}

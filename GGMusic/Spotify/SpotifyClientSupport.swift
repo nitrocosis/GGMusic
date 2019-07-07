@@ -7,3 +7,23 @@
 //
 
 import Foundation
+
+extension SpotifyClient {
+    
+    func login() {
+        let requestedScopes: SPTScope = [
+            .playlistReadPrivate,
+            .playlistReadCollaborative,
+            .playlistModifyPublic,
+            .playlistModifyPrivate,
+            .userLibraryRead,
+            .userLibraryModify,
+            .userReadPlaybackState,
+            .userModifyPlaybackState,
+            .userReadCurrentlyPlaying,
+            .appRemoteControl
+        ]
+        
+        sessionManager.initiateSession(with: requestedScopes, options: .default)
+    }
+}

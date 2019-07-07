@@ -22,17 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
-        print("success", session)
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        SpotifyClient.sharedInstance().sessionManager.application(app, open: url, options: options)
+        return true
     }
-    func sessionManager(manager: SPTSessionManager, didFailWith error: Error) {
-        print("fail", error)
-    }
-    func sessionManager(manager: SPTSessionManager, didRenew session: SPTSession) {
-        print("renewed", session)
-    }
-
-
-
 }
 

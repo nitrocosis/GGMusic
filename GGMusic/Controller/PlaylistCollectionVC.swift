@@ -9,3 +9,7 @@
 import Foundation
 
 //downloads playlists from Spotify + allows creation of own playlists (pop up with title)
+
+class PlaylistCollectionVC: UIViewController {
+    
+}
