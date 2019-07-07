@@ -10,7 +10,18 @@ import Foundation
 
 extension SpotifyClient {
     
-    func login() {
+    func isSpotifyAppInstalled() -> Bool {
+        return sessionManager.isSpotifyAppInstalled
+    }
+    
+    func isLoggedIn() -> Bool {
+        return sessionManager.session != nil
+    }
+    
+    func login(success: @escaping () -> Void, failed: @escaping () -> Void) {
+        self.loginSuccess = success
+        self.loginFailed = failed
+        
         let requestedScopes: SPTScope = [
             .playlistReadPrivate,
             .playlistReadCollaborative,

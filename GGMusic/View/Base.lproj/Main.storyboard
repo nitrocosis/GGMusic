@@ -124,7 +124,7 @@
         <!--Playlist CollectionVC-->
         <scene sceneID="yeL-r5-RoZ">
             <objects>
-                <viewController id="XLN-FY-Dzh" customClass="PlaylistCollectionVC" customModule="GGMusic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlaylistCollectionVC" id="XLN-FY-Dzh" customClass="PlaylistCollectionVC" customModule="GGMusic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aWh-hg-sop">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
