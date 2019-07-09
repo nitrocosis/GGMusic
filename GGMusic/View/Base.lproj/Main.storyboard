@@ -34,92 +34,83 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="109" translatesAutoresizingMaskIntoConstraints="NO" id="VLI-uk-Iqy">
-                                <rect key="frame" x="58" y="121" width="251" height="458"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="137" translatesAutoresizingMaskIntoConstraints="NO" id="SiV-TN-ebh">
+                                <rect key="frame" x="64" y="122" width="246.5" height="495.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="Upl-Iq-AN2">
-                                        <rect key="frame" x="25.5" y="0.0" width="200" height="190"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GG Music" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCf-1D-Y5q">
+                                        <rect key="frame" x="61" y="0.0" width="125" height="32.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="27"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="109" translatesAutoresizingMaskIntoConstraints="NO" id="VLI-uk-Iqy">
+                                        <rect key="frame" x="0.0" y="169.5" width="246.5" height="169"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rbT-r4-4ai">
-                                                <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="200" id="THZ-lm-3Ow"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T7M-SS-akZ">
-                                                <rect key="frame" x="0.0" y="80" width="200" height="30"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="200" id="RGG-BO-5Df"/>
-                                                </constraints>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwD-EA-rmN">
-                                                <rect key="frame" x="0.0" y="160" width="200" height="30"/>
-                                                <color key="backgroundColor" red="0.40674295249999998" green="0.75048186240000003" blue="0.89528473980000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="200" id="lDw-N2-2xL"/>
-                                                </constraints>
-                                                <color key="tintColor" red="0.40674295249999998" green="0.75048186240000003" blue="0.89528473980000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Submit">
-                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="submit:" destination="3dS-nb-KLS" eventType="touchUpInside" id="DYc-l3-O9b"/>
-                                                </connections>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="Upl-Iq-AN2">
+                                                <rect key="frame" x="23.5" y="0.0" width="200" height="30"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwD-EA-rmN">
+                                                        <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
+                                                        <color key="backgroundColor" red="0.40674295249999998" green="0.75048186240000003" blue="0.89528473980000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="200" id="lDw-N2-2xL"/>
+                                                        </constraints>
+                                                        <color key="tintColor" red="0.40674295249999998" green="0.75048186240000003" blue="0.89528473980000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" title="Login with Spotify">
+                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="loginWithSpotify:" destination="3dS-nb-KLS" eventType="touchUpInside" id="eEZ-vA-bGT"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="YHf-um-ldW">
+                                                <rect key="frame" x="0.0" y="139" width="246.5" height="30"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have Spotify?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mze-kG-sZI">
+                                                        <rect key="frame" x="0.0" y="5" width="148.5" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TTh-05-xzW">
+                                                        <rect key="frame" x="153.5" y="0.0" width="93" height="30"/>
+                                                        <state key="normal" title="Install Spotify"/>
+                                                        <connections>
+                                                            <action selector="installSpotifyButton:" destination="3dS-nb-KLS" eventType="touchUpInside" id="hjh-12-GZg"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Gb4-lv-qPv">
-                                        <rect key="frame" x="0.0" y="299" width="251" height="30"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cAf-bM-UgO">
-                                                <rect key="frame" x="0.0" y="0.0" width="179" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbv-IO-eH5">
-                                                <rect key="frame" x="199" y="0.0" width="52" height="30"/>
-                                                <state key="normal" title="Sign up"/>
-                                                <connections>
-                                                    <action selector="signUp:" destination="3dS-nb-KLS" eventType="touchUpInside" id="an7-Iu-7Rd"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gvL-AJ-tU2">
-                                        <rect key="frame" x="115.5" y="438" width="20" height="20"/>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gvL-AJ-tU2">
+                                        <rect key="frame" x="113.5" y="475.5" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="5a3-ds-Tk2" firstAttribute="bottom" secondItem="VLI-uk-Iqy" secondAttribute="bottom" constant="88" id="3P2-7B-scq"/>
-                            <constraint firstItem="VLI-uk-Iqy" firstAttribute="leading" secondItem="5a3-ds-Tk2" secondAttribute="leading" constant="58" id="3Vy-N3-MPl"/>
-                            <constraint firstItem="VLI-uk-Iqy" firstAttribute="top" secondItem="5a3-ds-Tk2" secondAttribute="top" constant="57" id="cd5-8R-Enx"/>
-                            <constraint firstItem="5a3-ds-Tk2" firstAttribute="trailing" secondItem="VLI-uk-Iqy" secondAttribute="trailing" constant="66" id="d6X-ZP-TPN"/>
+                            <constraint firstItem="5a3-ds-Tk2" firstAttribute="bottom" secondItem="SiV-TN-ebh" secondAttribute="bottom" constant="49.5" id="1Lh-Wx-z2g"/>
+                            <constraint firstItem="SiV-TN-ebh" firstAttribute="top" secondItem="5a3-ds-Tk2" secondAttribute="top" constant="58" id="Mhb-uA-FOI"/>
+                            <constraint firstItem="5a3-ds-Tk2" firstAttribute="trailing" secondItem="SiV-TN-ebh" secondAttribute="trailing" constant="64.5" id="dgl-MN-XeJ"/>
+                            <constraint firstItem="SiV-TN-ebh" firstAttribute="leading" secondItem="5a3-ds-Tk2" secondAttribute="leading" constant="64" id="hl9-kZ-Niu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5a3-ds-Tk2"/>
                     </view>
                     <navigationItem key="navigationItem" id="wlz-wC-RCS"/>
                     <connections>
                         <outlet property="activityIndicator" destination="gvL-AJ-tU2" id="ziB-Zp-MJZ"/>
-                        <outlet property="emailTextField" destination="rbT-r4-4ai" id="2V5-Wq-czV"/>
-                        <outlet property="passwordTextField" destination="T7M-SS-akZ" id="JPq-YM-lAT"/>
-                        <outlet property="signUpButton" destination="bbv-IO-eH5" id="zbI-7j-tfN"/>
-                        <outlet property="signUpLabel" destination="cAf-bM-UgO" id="4O8-M3-cH2"/>
-                        <outlet property="submitButton" destination="gwD-EA-rmN" id="3b2-cE-9pf"/>
+                        <outlet property="installSpotifyButton" destination="TTh-05-xzW" id="4nN-13-jjG"/>
+                        <outlet property="installSpotifyLabel" destination="Mze-kG-sZI" id="r2w-Qk-4sc"/>
+                        <outlet property="loginWithSpotifyButton" destination="gwD-EA-rmN" id="TPc-Lq-LwE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="88v-8Y-ILy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-570" y="19"/>
+            <point key="canvasLocation" x="-570.39999999999998" y="18.440779610194905"/>
         </scene>
         <!--Playlist CollectionVC-->
         <scene sceneID="yeL-r5-RoZ">
