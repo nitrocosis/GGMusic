@@ -10,15 +10,15 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
     let dataController = DataController(modelName: "GGMusic")
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         dataController.load()
-       // let navigationController = window?.rootViewController as! UINavigationController
-       // let loginVC = navigationController.topViewController as! LoginVC
-     //    loginVC.dataController = dataController
+        let navigationController = window?.rootViewController as! UINavigationController
+        let loginVC = navigationController.topViewController as! LoginVC
+        loginVC.dataController = dataController
         return true
     }
     
@@ -27,4 +27,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
+
 

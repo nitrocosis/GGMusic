@@ -21,6 +21,7 @@
 		291BF6CB22BAD3E8009ACCF8 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291BF6CA22BAD3E8009ACCF8 /* LoginVC.swift */; };
 		291BF6CD22BAD5CC009ACCF8 /* PlaylistCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291BF6CC22BAD5CC009ACCF8 /* PlaylistCollectionVC.swift */; };
 		291BF6CF22BAD61D009ACCF8 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291BF6CE22BAD61D009ACCF8 /* Error.swift */; };
+		293B868222D50F1800ACDA78 /* GGMusic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 293B868022D50F1800ACDA78 /* GGMusic.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		291BF6CC22BAD5CC009ACCF8 /* PlaylistCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCollectionVC.swift; sourceTree = "<group>"; };
 		291BF6CE22BAD61D009ACCF8 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		291BF6D122BBD4B0009ACCF8 /* GGMusic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GGMusic-Bridging-Header.h"; sourceTree = "<group>"; };
+		293B868122D50F1800ACDA78 /* GGMusic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GGMusic.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				291BF6B322BA824F009ACCF8 /* Info.plist */,
 				291BF6C622BAD358009ACCF8 /* DataController.swift */,
 				291BF6CE22BAD61D009ACCF8 /* Error.swift */,
+				293B868022D50F1800ACDA78 /* GGMusic.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				291BF6BB22BACF4B009ACCF8 /* SpotifyClient.swift in Sources */,
 				291BF6BF22BACF63009ACCF8 /* SpotifyConstants.swift in Sources */,
 				291BF6C922BAD3C4009ACCF8 /* SongListVC.swift in Sources */,
+				293B868222D50F1800ACDA78 /* GGMusic.xcdatamodeld in Sources */,
 				291BF6CF22BAD61D009ACCF8 /* Error.swift in Sources */,
 				291BF6BD22BACF5C009ACCF8 /* SpotifyClientSupport.swift in Sources */,
 			);
@@ -436,6 +440,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		293B868022D50F1800ACDA78 /* GGMusic.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				293B868122D50F1800ACDA78 /* GGMusic.xcdatamodel */,
+			);
+			currentVersion = 293B868122D50F1800ACDA78 /* GGMusic.xcdatamodel */;
+			path = GGMusic.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 291BF69C22BA824E009ACCF8 /* Project object */;
 }

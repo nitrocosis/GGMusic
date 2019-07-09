@@ -12,13 +12,15 @@ import CoreData
 
 class LoginVC: UIViewController {
     
+    var dataController: DataController!
+    
     @IBOutlet weak var loginWithSpotifyButton: UIButton!
     @IBOutlet weak var installSpotifyButton: UIButton!
     @IBOutlet weak var installSpotifyLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
-       // loginWithSpotifyButton.isHidden = true
+       loginWithSpotifyButton.isHidden = false
         installSpotifyButton.isHidden = true
         let client = SpotifyClient.sharedInstance()
         if (client.isSpotifyAppInstalled()) {
