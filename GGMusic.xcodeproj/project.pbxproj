@@ -22,6 +22,9 @@
 		291BF6CD22BAD5CC009ACCF8 /* PlaylistCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291BF6CC22BAD5CC009ACCF8 /* PlaylistCollectionVC.swift */; };
 		291BF6CF22BAD61D009ACCF8 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291BF6CE22BAD61D009ACCF8 /* Error.swift */; };
 		293B868222D50F1800ACDA78 /* GGMusic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 293B868022D50F1800ACDA78 /* GGMusic.xcdatamodeld */; };
+		29909F9522D5856800A7B49B /* SpotifyPlaylist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29909F9422D5856800A7B49B /* SpotifyPlaylist.swift */; };
+		29909F9722D5869400A7B49B /* SpotifyPlaylists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29909F9622D5869400A7B49B /* SpotifyPlaylists.swift */; };
+		29909F9922D5870300A7B49B /* SpotifyImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29909F9822D5870300A7B49B /* SpotifyImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +46,9 @@
 		291BF6CE22BAD61D009ACCF8 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		291BF6D122BBD4B0009ACCF8 /* GGMusic-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GGMusic-Bridging-Header.h"; sourceTree = "<group>"; };
 		293B868122D50F1800ACDA78 /* GGMusic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GGMusic.xcdatamodel; sourceTree = "<group>"; };
+		29909F9422D5856800A7B49B /* SpotifyPlaylist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyPlaylist.swift; sourceTree = "<group>"; };
+		29909F9622D5869400A7B49B /* SpotifyPlaylists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyPlaylists.swift; sourceTree = "<group>"; };
+		29909F9822D5870300A7B49B /* SpotifyImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,9 @@
 				291BF6BA22BACF4B009ACCF8 /* SpotifyClient.swift */,
 				291BF6BC22BACF5C009ACCF8 /* SpotifyClientSupport.swift */,
 				291BF6BE22BACF63009ACCF8 /* SpotifyConstants.swift */,
+				29909F9422D5856800A7B49B /* SpotifyPlaylist.swift */,
+				29909F9622D5869400A7B49B /* SpotifyPlaylists.swift */,
+				29909F9822D5870300A7B49B /* SpotifyImage.swift */,
 			);
 			path = Spotify;
 			sourceTree = "<group>";
@@ -209,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				291BF6AA22BA824E009ACCF8 /* MusicPlayerVC.swift in Sources */,
+				29909F9522D5856800A7B49B /* SpotifyPlaylist.swift in Sources */,
 				291BF6CD22BAD5CC009ACCF8 /* PlaylistCollectionVC.swift in Sources */,
 				291BF6C722BAD358009ACCF8 /* DataController.swift in Sources */,
 				291BF6CB22BAD3E8009ACCF8 /* LoginVC.swift in Sources */,
@@ -219,6 +229,8 @@
 				293B868222D50F1800ACDA78 /* GGMusic.xcdatamodeld in Sources */,
 				291BF6CF22BAD61D009ACCF8 /* Error.swift in Sources */,
 				291BF6BD22BACF5C009ACCF8 /* SpotifyClientSupport.swift in Sources */,
+				29909F9922D5870300A7B49B /* SpotifyImage.swift in Sources */,
+				29909F9722D5869400A7B49B /* SpotifyPlaylists.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

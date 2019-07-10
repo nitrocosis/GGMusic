@@ -7,16 +7,31 @@
 //
 
 import Foundation
+import UIKit
 
 //downloads playlists from Spotify + allows creation of own playlists (pop up with title)
 
 class PlaylistCollectionVC: UIViewController {
     
+    private let PlaylistCellReuseIdentifier = "Cell"
+    var dataController: DataController!
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
-    private let PhotosAlbumCellReuseIdentifier = "Cell"
+    @IBAction func cancelButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
+    @IBAction func createPlaylistButton(_ sender: Any) {
+        presentNewPlaylistAlert()
+    }
+    
+    override func viewDidLoad() {
+        SpotifyClient.sharedInstance().taskForGetPlaylists { (result, error) in
+            // TODO
+        }
+    }
     
     func presentNewPlaylistAlert() {
         let alert = UIAlertController(title: "New Playlist", message: "Enter a name for this playlist", preferredStyle: .alert)
@@ -48,16 +63,34 @@ class PlaylistCollectionVC: UIViewController {
     }
     
     func createPlaylist(name: String) {
+        //create empty playlist with Placeholder img and name as label and save to core data
     }
     
-    @IBAction func cancelButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+    func holdToDelete() {
+        //hold to delete playlist with alert
     }
     
-    @IBAction func createPlaylistButton(_ sender: Any) {
-        presentNewPlaylistAlert()
+}
+
+extension PlaylistCollectionVC: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        // TODO
+        return 0
     }
     
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaylistCellReuseIdentifier, for: indexPath)
+        return cell
+    }
+    
+}
+
+extension PlaylistCollectionVC: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+    }
 }
 
 

@@ -8,11 +8,19 @@
 
 import Foundation
 
-class SpotifyConstants {
+extension SpotifyClient {
     
-    struct URLConstants {
+    struct SpotifyConstants {
+
+        struct Configuration {
+            static let ClientId = "e59bc86bd19545b38a185d3beefa34de"
+            static let RedirectURL = URL(string: "gg-music://callback")!
+            static let TokenSwapURL = URL(string: "https://gg-music.herokuapp.com/api/token")!
+            static let TokenRefreshURL = URL(string: "https://gg-music.herokuapp.com/api/refresh_token")!
+        }
         
-        let ClientID = "e59bc86bd19545b38a185d3beefa34de"
-        let RedirectURL = "spotify-ios-quick-start://spotify-login-callback"
+        struct Endpoints {
+            static let GetPlaylists = URL(string: "https://api.spotify.com/v1/me/playlists")!
+        }
     }
 }

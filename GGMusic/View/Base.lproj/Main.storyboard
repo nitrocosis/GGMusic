@@ -260,6 +260,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="IVr-R6-JNx"/>
                     </view>
+                    <connections>
+                        <outlet property="playButton" destination="rQl-Wc-r7v" id="UIg-EN-Ho6"/>
+                        <outlet property="playlistTitleLabel" destination="QDj-lg-SIw" id="q6K-ch-NIg"/>
+                        <outlet property="shuffleButton" destination="wzy-Ut-5aL" id="13K-CS-0e1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Sn-D6-1Xs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
