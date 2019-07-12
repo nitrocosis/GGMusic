@@ -21,21 +21,6 @@ class LoginVC: UIViewController {
     
     override func viewDidLoad() {
        loginWithSpotifyButton.isHidden = false
-        installSpotifyButton.isHidden = true
-        let client = SpotifyClient.sharedInstance()
-        if (client.isSpotifyAppInstalled()) {
-            if (client.isLoggedIn()) {
-                startPlaylistCollectionVC()
-            } else {
-                // TODO Show "Login with Spotify" button.
-                loginWithSpotifyButton.isHidden = false
-            }
-        } else {
-            installSpotifyButton.isHidden = false
-            // TODO Show "Install Spotify" button.
-            // When clicked should show the Spotify app in the App Store.
-            
-        }
     }
     
     @IBAction func loginWithSpotify(_ sender: Any) {
@@ -51,15 +36,6 @@ class LoginVC: UIViewController {
     }
     
     private func loginWithSpotify() {
-        SpotifyClient.sharedInstance().login(
-            success: {
-                self.startPlaylistCollectionVC()
-            },
-            failed: {
-                self.activityIndicator.stopAnimating()
-                self.displayError("Login failed. Please try again.")
-            }
-        )
     }
     
     private func startPlaylistCollectionVC() {

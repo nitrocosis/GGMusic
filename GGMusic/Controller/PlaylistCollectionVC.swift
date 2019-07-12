@@ -27,12 +27,6 @@ class PlaylistCollectionVC: UIViewController {
         presentNewPlaylistAlert()
     }
     
-    override func viewDidLoad() {
-        SpotifyClient.sharedInstance().taskForGetPlaylists { (result, error) in
-            // TODO
-        }
-    }
-    
     func presentNewPlaylistAlert() {
         let alert = UIAlertController(title: "New Playlist", message: "Enter a name for this playlist", preferredStyle: .alert)
         
@@ -76,7 +70,7 @@ extension PlaylistCollectionVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // TODO
-        return 0
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
