@@ -21,6 +21,8 @@ class LoginVC: UIViewController {
     
     override func viewDidLoad() {
        loginWithSpotifyButton.isHidden = false
+        
+        print("DEVELOPER TOKEN: \(Authentication().createDeveloperToken())")
     }
     
     @IBAction func loginWithSpotify(_ sender: Any) {

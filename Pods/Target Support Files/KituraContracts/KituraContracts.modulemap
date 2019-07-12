@@ -1,0 +1,6 @@
+module KituraContracts {
+  umbrella header "KituraContracts-umbrella.h"
+
+  export *
+  module * { export * }
+}

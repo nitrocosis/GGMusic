@@ -1,0 +1,6 @@
+module Pods_GGMusic {
+  umbrella header "Pods-GGMusic-umbrella.h"
+
+  export *
+  module * { export * }
+}

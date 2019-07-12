@@ -19,6 +19,9 @@
 		291BF6CF22BAD61D009ACCF8 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291BF6CE22BAD61D009ACCF8 /* Error.swift */; };
 		293B868222D50F1800ACDA78 /* GGMusic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 293B868022D50F1800ACDA78 /* GGMusic.xcdatamodeld */; };
 		29A7D50922D8296500A166B9 /* AuthKey_B4AA2JUBGC.p8 in Resources */ = {isa = PBXBuildFile; fileRef = 29A7D50822D8296500A166B9 /* AuthKey_B4AA2JUBGC.p8 */; };
+		29A7D50D22D82C9900A166B9 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 29A7D50C22D82C9900A166B9 /* Podfile */; };
+		29A7D51022D8302600A166B9 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A7D50F22D8302600A166B9 /* Authentication.swift */; };
+		66E784766AF982D425309805 /* libPods-GGMusic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 867961AFDD9E7547DA502CA9 /* libPods-GGMusic.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,11 @@
 		291BF6CE22BAD61D009ACCF8 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		293B868122D50F1800ACDA78 /* GGMusic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GGMusic.xcdatamodel; sourceTree = "<group>"; };
 		29A7D50822D8296500A166B9 /* AuthKey_B4AA2JUBGC.p8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthKey_B4AA2JUBGC.p8; sourceTree = "<group>"; };
+		29A7D50C22D82C9900A166B9 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		29A7D50F22D8302600A166B9 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		66CD4571B44E2D7F21BF2B84 /* Pods-GGMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GGMusic.debug.xcconfig"; path = "Target Support Files/Pods-GGMusic/Pods-GGMusic.debug.xcconfig"; sourceTree = "<group>"; };
+		867961AFDD9E7547DA502CA9 /* libPods-GGMusic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GGMusic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFF19C86E7FBC66821BFE76B /* Pods-GGMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GGMusic.release.xcconfig"; path = "Target Support Files/Pods-GGMusic/Pods-GGMusic.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,15 +51,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66E784766AF982D425309805 /* libPods-GGMusic.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1555B53EF5D46D8FEAD33DD9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				66CD4571B44E2D7F21BF2B84 /* Pods-GGMusic.debug.xcconfig */,
+				BFF19C86E7FBC66821BFE76B /* Pods-GGMusic.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		2913E93822BC82FF009BD4F8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				867961AFDD9E7547DA502CA9 /* libPods-GGMusic.a */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -59,10 +78,12 @@
 		291BF69B22BA824E009ACCF8 = {
 			isa = PBXGroup;
 			children = (
-				29A7D50822D8296500A166B9 /* AuthKey_B4AA2JUBGC.p8 */,
+				29A7D50E22D82FE700A166B9 /* MusicKit */,
+				29A7D50C22D82C9900A166B9 /* Podfile */,
 				291BF6A622BA824E009ACCF8 /* GGMusic */,
 				291BF6A522BA824E009ACCF8 /* Products */,
 				2913E93822BC82FF009BD4F8 /* Frameworks */,
+				1555B53EF5D46D8FEAD33DD9 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,6 +138,15 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		29A7D50E22D82FE700A166B9 /* MusicKit */ = {
+			isa = PBXGroup;
+			children = (
+				29A7D50822D8296500A166B9 /* AuthKey_B4AA2JUBGC.p8 */,
+				29A7D50F22D8302600A166B9 /* Authentication.swift */,
+			);
+			path = MusicKit;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -124,6 +154,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 291BF6B622BA824F009ACCF8 /* Build configuration list for PBXNativeTarget "GGMusic" */;
 			buildPhases = (
+				273D6C420EDCD27B33127E75 /* [CP] Check Pods Manifest.lock */,
 				291BF6A022BA824E009ACCF8 /* Sources */,
 				291BF6A122BA824E009ACCF8 /* Frameworks */,
 				291BF6A222BA824E009ACCF8 /* Resources */,
@@ -175,6 +206,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29A7D50D22D82C9900A166B9 /* Podfile in Resources */,
 				291BF6B222BA824F009ACCF8 /* LaunchScreen.storyboard in Resources */,
 				291BF6AF22BA824F009ACCF8 /* Assets.xcassets in Resources */,
 				29A7D50922D8296500A166B9 /* AuthKey_B4AA2JUBGC.p8 in Resources */,
@@ -183,6 +215,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		273D6C420EDCD27B33127E75 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GGMusic-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		291BF6A022BA824E009ACCF8 /* Sources */ = {
@@ -197,6 +254,7 @@
 				291BF6C922BAD3C4009ACCF8 /* SongListVC.swift in Sources */,
 				293B868222D50F1800ACDA78 /* GGMusic.xcdatamodeld in Sources */,
 				291BF6CF22BAD61D009ACCF8 /* Error.swift in Sources */,
+				29A7D51022D8302600A166B9 /* Authentication.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +398,7 @@
 		};
 		291BF6B722BA824F009ACCF8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 66CD4571B44E2D7F21BF2B84 /* Pods-GGMusic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -369,6 +428,7 @@
 		};
 		291BF6B822BA824F009ACCF8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BFF19C86E7FBC66821BFE76B /* Pods-GGMusic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

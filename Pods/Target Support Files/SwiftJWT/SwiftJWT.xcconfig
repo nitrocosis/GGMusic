@@ -1,0 +1,11 @@
+CONFIGURATION_BUILD_DIR = ${PODS_CONFIGURATION_BUILD_DIR}/SwiftJWT
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+OTHER_CFLAGS = $(inherited) -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/BlueCryptor/Cryptor.modulemap" -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/BlueECC/CryptorECC.modulemap" -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/BlueRSA/CryptorRSA.modulemap" -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/KituraContracts/KituraContracts.modulemap" -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/LoggerAPI/LoggerAPI.modulemap" -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/Logging/Logging.modulemap"
+OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS -Xcc -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/BlueCryptor/Cryptor.modulemap" -Xcc -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/BlueECC/CryptorECC.modulemap" -Xcc -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/BlueRSA/CryptorRSA.modulemap" -Xcc -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/KituraContracts/KituraContracts.modulemap" -Xcc -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/LoggerAPI/LoggerAPI.modulemap" -Xcc -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/Logging/Logging.modulemap" -import-underlying-module -Xcc -fmodule-map-file="${SRCROOT}/${MODULEMAP_FILE}"
+PODS_BUILD_DIR = ${BUILD_DIR}
+PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_ROOT = ${SRCROOT}
+PODS_TARGET_SRCROOT = ${PODS_ROOT}/SwiftJWT
+PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.${PRODUCT_NAME:rfc1034identifier}
+SKIP_INSTALL = YES
+SWIFT_INCLUDE_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/BlueCryptor" "${PODS_CONFIGURATION_BUILD_DIR}/BlueECC" "${PODS_CONFIGURATION_BUILD_DIR}/BlueRSA" "${PODS_CONFIGURATION_BUILD_DIR}/KituraContracts" "${PODS_CONFIGURATION_BUILD_DIR}/LoggerAPI" "${PODS_CONFIGURATION_BUILD_DIR}/Logging"

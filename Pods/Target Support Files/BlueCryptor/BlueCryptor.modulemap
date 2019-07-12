@@ -1,0 +1,6 @@
+module Cryptor {
+  umbrella header "BlueCryptor-umbrella.h"
+
+  export *
+  module * { export * }
+}
