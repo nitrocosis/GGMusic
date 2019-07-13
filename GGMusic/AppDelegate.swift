@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navigationController = window?.rootViewController as! UINavigationController
         let loginVC = navigationController.topViewController as! LoginVC
         loginVC.dataController = dataController
+        
+        Authentication.shared.dataController = dataController
         return true
     }
     

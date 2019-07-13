@@ -7,11 +7,44 @@
 //
 
 import Foundation
+import CoreData
 import SwiftJWT
 
 class Authentication {
     
-    func createDeveloperToken() -> String {
+    static let shared = Authentication()
+    
+    var dataController: DataController!
+    
+    private var developerToken: String!
+    
+    /*
+     * Gets the developer token from core data. If not in core data, creates a new one.
+     *
+     * TODO Make sure that the same developer token is used every time the app is run.
+     */
+    func getDeveloperToken() -> String {
+        // First, try to load developer token from core data.
+        let authTokensRequest: NSFetchRequest<AuthTokens> = AuthTokens.fetchRequest()
+        let authTokensArray: [AuthTokens] = try! dataController.viewContext.fetch(authTokensRequest)
+        
+        var authTokens: AuthTokens? = nil
+        if (authTokensArray.count > 0) {
+            authTokens = authTokensArray[0]
+        }
+        
+        if (authTokens != nil && authTokens!.developerToken != nil) {
+            developerToken = authTokens!.developerToken
+        } else {
+            // Token doesn't exist in core data, create a new one.
+            developerToken = createDeveloperToken()
+            saveTokens()
+        }
+        
+        return developerToken
+    }
+    
+    private func createDeveloperToken() -> String {
         let header = Header(kid: "B4AA2JUBGC")
         
         struct MyClaims: Claims {
@@ -32,5 +65,9 @@ class Authentication {
         let privateKey = try! String(contentsOf: keyFileUrl).data(using: .utf8)!
         
         return try! jwt.sign(using: .es256(privateKey: privateKey))
+    }
+    
+    private func saveTokens() {
+        try? dataController.viewContext.save()
     }
 }
