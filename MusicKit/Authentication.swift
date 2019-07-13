@@ -20,8 +20,6 @@ class Authentication {
     
     /*
      * Gets the developer token from core data. If not in core data, creates a new one.
-     *
-     * TODO Make sure that the same developer token is used every time the app is run.
      */
     func getDeveloperToken() -> String {
         // First, try to load developer token from core data.
@@ -38,6 +36,9 @@ class Authentication {
         } else {
             // Token doesn't exist in core data, create a new one.
             developerToken = createDeveloperToken()
+            
+            authTokens = AuthTokens(context: dataController.viewContext)
+            authTokens!.developerToken = developerToken
             saveTokens()
         }
         
