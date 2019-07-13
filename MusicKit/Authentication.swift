@@ -27,7 +27,8 @@ class Authentication {
         
         var jwt = JWT(header: header, claims: claims)
         
-        let keyFileUrl = URL(fileURLWithPath:"AuthKey_B4AA2JUBGC.p8")
+        let keyFilePath = Bundle.main.path(forResource: "AuthKey_B4AA2JUBGC", ofType: "p8")!
+        let keyFileUrl = URL(fileURLWithPath: keyFilePath)
         let privateKey = try! String(contentsOf: keyFileUrl).data(using: .utf8)!
         
         return try! jwt.sign(using: .es256(privateKey: privateKey))
