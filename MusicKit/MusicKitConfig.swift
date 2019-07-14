@@ -40,10 +40,13 @@ class MusicKitConfig {
             switch (status) {
             case .notDetermined:
                 print("STATUS - not determined")
+                error()
             case .denied:
                 print("STATUS - denied")
+                error()
             case .restricted:
                 print("STATUS - restricted")
+                error()
             case .authorized:
                 print("STATUS - authorized")
                 self.loadDeveloperToken()
