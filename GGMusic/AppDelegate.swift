@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let loginVC = navigationController.topViewController as! LoginVC
         loginVC.dataController = dataController
         
-        Authentication.shared.dataController = dataController
+        MusicKitConfig.shared.setup(dataController)
         return true
     }
     

@@ -22,7 +22,11 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
        loginWithSpotifyButton.isHidden = false
         
-        print("DEVELOPER TOKEN: \(Authentication.shared.getDeveloperToken())")
+        MusicKitConfig.shared.loadConfig(success: {
+            print("SUCCESS")
+        }, error: {
+            print("ERROR")
+        })
     }
     
     @IBAction func loginWithSpotify(_ sender: Any) {
