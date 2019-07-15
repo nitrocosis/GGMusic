@@ -22,16 +22,33 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
        loginWithSpotifyButton.isHidden = false
         
-        MusicKitConfig.shared.loadConfig(success: {
-            print("SUCCESS")
+        // TODO Write method to check if config is in core data.
+        // If so, just start playlist VC. Otherwise, show "Get Started" button.
+        
+        // TODO Show "Get Started" button
+        // TODO clean up this VC. Remove all spotify shit.
+        // TODO Fix up UI.
+        getStartedButtonClicked()
+    }
+    
+    private func getStartedButtonClicked() {
+        setupMusicKit()
+    }
+    
+    private func setupMusicKit() {
+        MusicKitSetup.shared.setupAccount(callerVC: self, success: {
+            print("MusicKit setup success")
+            // TODO Start playlist VC
         }, error: {
-            print("ERROR")
+            print("MusicKit setup error")
+        }, signupScreenDismissed: {
+            print("MusicKit sign up screen dismissed")
+            self.setupMusicKit()
         })
     }
     
     @IBAction func loginWithSpotify(_ sender: Any) {
         activityIndicator.startAnimating()
-        loginWithSpotify()
     }
     
     @IBAction func installSpotifyButton(_ sender: Any) {
@@ -39,9 +56,6 @@ class LoginVC: UIViewController {
             UIApplication.shared.canOpenURL(url){
             UIApplication.shared.openURL(url)
         }
-    }
-    
-    private func loginWithSpotify() {
     }
     
     private func startPlaylistCollectionVC() {

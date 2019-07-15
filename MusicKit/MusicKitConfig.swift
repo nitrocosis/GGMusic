@@ -22,7 +22,7 @@ class MusicKitConfig {
     private var dataController: DataController!
     private var config: MKConfig!
     
-    private let cloudService: SKCloudServiceController = SKCloudServiceController()
+    private let cloudServiceController = SKCloudServiceController()
     
     func setup(_ dataController: DataController) {
         self.dataController = dataController
@@ -35,7 +35,7 @@ class MusicKitConfig {
         }
     }
     
-    func loadConfig(success: @escaping () -> Void, error: @escaping () -> Void) {
+    func loadConfig(_ success: @escaping () -> Void, _ error: @escaping () -> Void) {
         SKCloudServiceController.requestAuthorization { (status) in
             switch (status) {
             case .notDetermined:
@@ -63,7 +63,7 @@ class MusicKitConfig {
         if (config!.storeFrontCountryCode == nil) {
             print("Store front country code not in core data, requesting it")
             // Token doesn't exist in core data, request a new one.
-            cloudService.requestStorefrontCountryCode { (countryCode, countryCodeError) in
+            cloudServiceController.requestStorefrontCountryCode { (countryCode, countryCodeError) in
                 if (countryCode == nil || countryCodeError != nil){
                     print("Store front country code request ERROR: \(countryCodeError?.localizedDescription)")
                 }
@@ -88,7 +88,7 @@ class MusicKitConfig {
         if (config!.userToken == nil) {
             print("User token not in core data, requesting one")
             // Token doesn't exist in core data, request a new one.
-            cloudService.requestUserToken(forDeveloperToken: developerToken) { (userToken, userTokenError) in
+            cloudServiceController.requestUserToken(forDeveloperToken: developerToken) { (userToken, userTokenError) in
                 if (userToken == nil || userTokenError != nil){
                     print("User token request ERROR: \(userTokenError?.localizedDescription)")
                     error()

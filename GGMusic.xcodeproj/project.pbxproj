@@ -21,6 +21,7 @@
 		29A7D50922D8296500A166B9 /* AuthKey_B4AA2JUBGC.p8 in Resources */ = {isa = PBXBuildFile; fileRef = 29A7D50822D8296500A166B9 /* AuthKey_B4AA2JUBGC.p8 */; };
 		29A7D50D22D82C9900A166B9 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 29A7D50C22D82C9900A166B9 /* Podfile */; };
 		29A7D51022D8302600A166B9 /* MusicKitConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A7D50F22D8302600A166B9 /* MusicKitConfig.swift */; };
+		29A7D51222DC22A400A166B9 /* MusicKitSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A7D51122DC22A400A166B9 /* MusicKitSetup.swift */; };
 		66E784766AF982D425309805 /* libPods-GGMusic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 867961AFDD9E7547DA502CA9 /* libPods-GGMusic.a */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		29A7D50822D8296500A166B9 /* AuthKey_B4AA2JUBGC.p8 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AuthKey_B4AA2JUBGC.p8; sourceTree = "<group>"; };
 		29A7D50C22D82C9900A166B9 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		29A7D50F22D8302600A166B9 /* MusicKitConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicKitConfig.swift; sourceTree = "<group>"; };
+		29A7D51122DC22A400A166B9 /* MusicKitSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicKitSetup.swift; sourceTree = "<group>"; };
 		66CD4571B44E2D7F21BF2B84 /* Pods-GGMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GGMusic.debug.xcconfig"; path = "Target Support Files/Pods-GGMusic/Pods-GGMusic.debug.xcconfig"; sourceTree = "<group>"; };
 		867961AFDD9E7547DA502CA9 /* libPods-GGMusic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GGMusic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFF19C86E7FBC66821BFE76B /* Pods-GGMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GGMusic.release.xcconfig"; path = "Target Support Files/Pods-GGMusic/Pods-GGMusic.release.xcconfig"; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			children = (
 				29A7D50822D8296500A166B9 /* AuthKey_B4AA2JUBGC.p8 */,
 				29A7D50F22D8302600A166B9 /* MusicKitConfig.swift */,
+				29A7D51122DC22A400A166B9 /* MusicKitSetup.swift */,
 			);
 			path = MusicKit;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				291BF6CB22BAD3E8009ACCF8 /* LoginVC.swift in Sources */,
 				291BF6A822BA824E009ACCF8 /* AppDelegate.swift in Sources */,
 				291BF6C922BAD3C4009ACCF8 /* SongListVC.swift in Sources */,
+				29A7D51222DC22A400A166B9 /* MusicKitSetup.swift in Sources */,
 				293B868222D50F1800ACDA78 /* GGMusic.xcdatamodeld in Sources */,
 				291BF6CF22BAD61D009ACCF8 /* Error.swift in Sources */,
 				29A7D51022D8302600A166B9 /* MusicKitConfig.swift in Sources */,
