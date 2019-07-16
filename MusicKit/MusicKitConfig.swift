@@ -33,6 +33,14 @@ class MusicKitConfig {
         } else {
             config = MKConfig(context: dataController.viewContext)
         }
+        
+        developerToken = config.developerToken
+        userToken = config.userToken
+        storeFrontCountryCode = config.storeFrontCountryCode
+    }
+    
+    func setupComplete() -> Bool {
+        return developerToken != nil && userToken != nil && storeFrontCountryCode != nil
     }
     
     func loadConfig(_ success: @escaping () -> Void, _ error: @escaping () -> Void) {
@@ -60,7 +68,7 @@ class MusicKitConfig {
      * Loads the store front country code from core data. If not in core data, requests it.
      */
     private func loadStoreFrontCountryCode() {
-        if (config!.storeFrontCountryCode == nil) {
+        if (storeFrontCountryCode == nil) {
             print("Store front country code not in core data, requesting it")
             // Token doesn't exist in core data, request a new one.
             cloudServiceController.requestStorefrontCountryCode { (countryCode, countryCodeError) in
@@ -85,7 +93,7 @@ class MusicKitConfig {
      * Loads the user token from core data. If not in core data, requests a new one.
      */
     private func loadUserToken(_ success: @escaping () -> Void, _ error: @escaping () -> Void) {
-        if (config!.userToken == nil) {
+        if (userToken == nil) {
             print("User token not in core data, requesting one")
             // Token doesn't exist in core data, request a new one.
             cloudServiceController.requestUserToken(forDeveloperToken: developerToken) { (userToken, userTokenError) in
@@ -113,7 +121,7 @@ class MusicKitConfig {
      * Loads the developer token from core data. If not in core data, creates a new one.
      */
     private func loadDeveloperToken() {
-        if (config!.developerToken == nil) {
+        if (developerToken == nil) {
             print("Developer token not in core data, creating one")
             // Token doesn't exist in core data, create a new one.
             developerToken = createDeveloperToken()

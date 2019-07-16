@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WIq-QW-cWs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WIq-QW-cWs">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -34,60 +34,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" spacing="137" translatesAutoresizingMaskIntoConstraints="NO" id="SiV-TN-ebh">
-                                <rect key="frame" x="64" y="122" width="246.5" height="495.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" spacing="171" translatesAutoresizingMaskIntoConstraints="NO" id="tU4-C3-hjd">
+                                <rect key="frame" x="125" y="98" width="125" height="405.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GG Music" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCf-1D-Y5q">
-                                        <rect key="frame" x="61" y="0.0" width="125" height="32.5"/>
-                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="27"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="109" translatesAutoresizingMaskIntoConstraints="NO" id="VLI-uk-Iqy">
-                                        <rect key="frame" x="0.0" y="169.5" width="246.5" height="169"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="149" translatesAutoresizingMaskIntoConstraints="NO" id="XPu-V6-bZj">
+                                        <rect key="frame" x="0.0" y="0.0" width="125" height="214.5"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="Upl-Iq-AN2">
-                                                <rect key="frame" x="23.5" y="0.0" width="200" height="30"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwD-EA-rmN">
-                                                        <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
-                                                        <color key="backgroundColor" red="0.40674295249999998" green="0.75048186240000003" blue="0.89528473980000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="200" id="lDw-N2-2xL"/>
-                                                        </constraints>
-                                                        <color key="tintColor" red="0.40674295249999998" green="0.75048186240000003" blue="0.89528473980000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title="Login with Spotify">
-                                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="loginWithSpotify:" destination="3dS-nb-KLS" eventType="touchUpInside" id="eEZ-vA-bGT"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="YHf-um-ldW">
-                                                <rect key="frame" x="0.0" y="139" width="246.5" height="30"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have Spotify?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mze-kG-sZI">
-                                                        <rect key="frame" x="0.0" y="5" width="148.5" height="20.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TTh-05-xzW">
-                                                        <rect key="frame" x="153.5" y="0.0" width="93" height="30"/>
-                                                        <state key="normal" title="Install Spotify"/>
-                                                        <connections>
-                                                            <action selector="installSpotifyButton:" destination="3dS-nb-KLS" eventType="touchUpInside" id="hjh-12-GZg"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GG Music" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCf-1D-Y5q">
+                                                <rect key="frame" x="0.0" y="0.0" width="125" height="32.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="27"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IeH-4C-hPu">
+                                                <rect key="frame" x="19" y="181.5" width="87" height="33"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="Get started">
+                                                    <color key="titleColor" red="0.40674295249999998" green="0.75048186240000003" blue="0.89528473980000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="getStartedButton:" destination="3dS-nb-KLS" eventType="touchUpInside" id="3Qh-E8-aWT"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gvL-AJ-tU2">
-                                        <rect key="frame" x="113.5" y="475.5" width="20" height="20"/>
+                                        <rect key="frame" x="52.5" y="385.5" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
                             </stackView>
@@ -98,9 +71,6 @@
                     <navigationItem key="navigationItem" id="wlz-wC-RCS"/>
                     <connections>
                         <outlet property="activityIndicator" destination="gvL-AJ-tU2" id="ziB-Zp-MJZ"/>
-                        <outlet property="installSpotifyButton" destination="TTh-05-xzW" id="4nN-13-jjG"/>
-                        <outlet property="installSpotifyLabel" destination="Mze-kG-sZI" id="r2w-Qk-4sc"/>
-                        <outlet property="loginWithSpotifyButton" destination="gwD-EA-rmN" id="TPc-Lq-LwE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="88v-8Y-ILy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -323,7 +293,7 @@
                                         </subviews>
                                     </stackView>
                                     <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="GPH-Iz-HOT">
-                                        <rect key="frame" x="55.5" y="472" width="150" height="31"/>
+                                        <rect key="frame" x="53.5" y="472" width="154" height="31"/>
                                     </slider>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4wD-ni-gPK">
                                         <rect key="frame" x="107.5" y="552" width="46" height="30"/>
