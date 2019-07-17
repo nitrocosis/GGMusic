@@ -21,6 +21,7 @@ class MusicKitSetup: NSObject, SKCloudServiceSetupViewControllerDelegate {
                       success: @escaping () -> Void,
                       error: @escaping () -> Void,
                       signupScreenDismissed: @escaping () -> Void) {
+        
         cloudServiceController.requestCapabilities { capabilities, capabilitiesError in
             if capabilities.contains(.musicCatalogPlayback) {
                 // User has Apple Music account. Load the config.

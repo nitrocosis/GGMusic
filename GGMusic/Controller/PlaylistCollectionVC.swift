@@ -19,6 +19,15 @@ class PlaylistCollectionVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        MKPlaylistClient.shared.getPlaylists() { (playlistResponse, error) in
+            print("Response: \(playlistResponse)")
+            print("Error: \(error)")
+        }
+    }
+    
     @IBAction func cancelButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
