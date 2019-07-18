@@ -15,7 +15,17 @@ extension MKPlaylistClient {
             if let error = error {
                 completion(nil, error as NSError)
             } else {
-                completion(playlistResponse as! MKPlaylistResponse, nil)
+                completion(playlistResponse as? MKPlaylistResponse, nil)
+            }
+        }
+    }
+    
+    func postPlaylist(name: String, completion: @escaping (_ playlistResponse: MKPlaylistResponse?, _ error: NSError?) -> Void) {
+        taskForPostPlaylist(playlistName: name) { (playlistResponse, error) in
+            if let error = error {
+                completion(nil, error as NSError)
+            } else {
+                completion(playlistResponse as? MKPlaylistResponse, nil)
             }
         }
     }

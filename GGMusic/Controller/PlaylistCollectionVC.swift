@@ -19,13 +19,45 @@ class PlaylistCollectionVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
+    var playlists: [Playlist]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Immediately show playlists in core data, if any.
+        showPlaylists()
+        
+        // Then get playlists from network to get updated playlists.
+        getPlaylists()
+    }
+    
+    private func showPlaylists() {
+        // TODO Hide the loading state and show the Playlists (populated state) in the collection view.
+        // TODO If there are no Playlists, show the empty state.
+    }
+    
+    private func getPlaylists() {
+        // TODO Show loading state if there are currently no Playlists shown in the collection view.
+        
         MKPlaylistClient.shared.getPlaylists() { (playlistResponse, error) in
-            print("Response: \(playlistResponse)")
-            print("Error: \(error)")
+            if (error != nil) {
+                // TODO If there is an error and there are no Playlists in core data, show the error state.
+                // TODO If there is an error but there are Playlists in core data, do nothing.
+            } else {
+                // Delete all of the Playlists from core data.
+                // TODO
+                // Create the Playlist core data objects from the playlistResponse.
+                // TODO
+                // Save the Playlists.
+                self.savePlaylists()
+                // Populate the collection view with the Playlists.
+                self.showPlaylists()
+            }
         }
+    }
+    
+    private func savePlaylists() {
+        try? dataController.viewContext.save()
     }
     
     @IBAction func cancelButton(_ sender: Any) {
@@ -67,6 +99,13 @@ class PlaylistCollectionVC: UIViewController {
     
     func createPlaylist(name: String) {
         //create empty playlist with Placeholder img and name as label and save to core data
+        MKPlaylistClient.shared.postPlaylist(name: name) { (playlistResponse, error) in
+            if (error != nil) {
+                // TODO
+            } else {
+                // TODO
+            }
+        }
     }
     
     func holdToDelete() {

@@ -43,6 +43,8 @@ class LoginVC: UIViewController {
     private func startPlaylistCollectionVC() {
         DispatchQueue.main.async {
             let controller = self.storyboard!.instantiateViewController(withIdentifier: "PlaylistCollectionVC")
+            let playlistCollectionVC = controller as! PlaylistCollectionVC
+            playlistCollectionVC.dataController = self.dataController
             self.present(controller, animated: true, completion: nil)
         }
     }

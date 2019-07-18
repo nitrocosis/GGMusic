@@ -5,9 +5,13 @@
         <attribute name="storeFrontCountryCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userToken" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Playlist" representedClassName="Playlist" syncable="YES" codeGenerationType="class"/>
+    <entity name="Playlist" representedClassName="Playlist" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Playlist" positionX="-63" positionY="-18" width="128" height="45"/>
         <element name="MKConfig" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="Playlist" positionX="-63" positionY="-18" width="128" height="90"/>
     </elements>
 </model>
