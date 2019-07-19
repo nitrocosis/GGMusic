@@ -14,5 +14,6 @@ class MKConstants {
     static let UserToken = "Music-User-Token"
     
     static let BaseURL = "https://api.music.apple.com/v1/"
-    static let Playlist = "me/library/playlists"
+    static let Playlist = "me/library/playlists/"
+    static let Tracks = "/tracks"
 }

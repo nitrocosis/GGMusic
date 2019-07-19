@@ -13,7 +13,7 @@ class MKPlaylistClient: MKClient {
     static let shared = MKPlaylistClient()
     
     func taskForGetPlaylists(completion: @escaping (_ playlistResponse: AnyObject?, _ error: NSError?) -> Void) {
-        
+
         let request = createURL(MKConstants.Playlist)
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if error != nil {

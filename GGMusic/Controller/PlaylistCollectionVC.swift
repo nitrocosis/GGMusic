@@ -21,6 +21,8 @@ class PlaylistCollectionVC: UIViewController {
     
     var playlists: [Playlist]?
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,11 +40,11 @@ class PlaylistCollectionVC: UIViewController {
     
     private func getPlaylists() {
         // TODO Show loading state if there are currently no Playlists shown in the collection view.
-        
         MKPlaylistClient.shared.getPlaylists() { (playlistResponse, error) in
             if (error != nil) {
                 // TODO If there is an error and there are no Playlists in core data, show the error state.
                 // TODO If there is an error but there are Playlists in core data, do nothing.
+                
             } else {
                 // Delete all of the Playlists from core data.
                 // TODO
@@ -52,6 +54,15 @@ class PlaylistCollectionVC: UIViewController {
                 self.savePlaylists()
                 // Populate the collection view with the Playlists.
                 self.showPlaylists()
+            }
+        }
+        
+        
+        MKTrackClient.shared.getTracks(playlistId: "p.eoGxpJeHZzGXBO") { (trackResponse, error) in
+            if (error != nil) {
+                print("ERROR: \(error)")
+            } else {
+                print("TRACKS: \(trackResponse)")
             }
         }
     }

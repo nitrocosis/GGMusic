@@ -9,9 +9,14 @@
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="song" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Song" inverseName="playlist" inverseEntity="Song" syncable="YES"/>
+    </entity>
+    <entity name="Song" representedClassName="Song" syncable="YES" codeGenerationType="class">
+        <relationship name="playlist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Playlist" inverseName="song" inverseEntity="Playlist" syncable="YES"/>
     </entity>
     <elements>
-        <element name="MKConfig" positionX="-63" positionY="-18" width="128" height="90"/>
-        <element name="Playlist" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="MKConfig" positionX="-15.43359375" positionY="-215.4609375" width="128" height="90"/>
+        <element name="Playlist" positionX="-334.6875" positionY="-6.65234375" width="128" height="103"/>
+        <element name="Song" positionX="-18" positionY="54" width="128" height="58"/>
     </elements>
 </model>

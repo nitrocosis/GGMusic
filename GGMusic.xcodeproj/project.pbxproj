@@ -27,6 +27,11 @@
 		29A7D51822DECB2300A166B9 /* MKConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A7D51722DECB2300A166B9 /* MKConstants.swift */; };
 		29A7D51A22DECF9A00A166B9 /* MKClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A7D51922DECF9A00A166B9 /* MKClient.swift */; };
 		29A7D51C22DED64300A166B9 /* MKPlaylistClientSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A7D51B22DED64300A166B9 /* MKPlaylistClientSupport.swift */; };
+		29A7D51E22E0E4B500A166B9 /* PlaylistState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A7D51D22E0E4B500A166B9 /* PlaylistState.swift */; };
+		29A7D52022E167DB00A166B9 /* MKTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A7D51F22E167DB00A166B9 /* MKTrack.swift */; };
+		29A7D52222E1686300A166B9 /* MKArtwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A7D52122E1686300A166B9 /* MKArtwork.swift */; };
+		29A7D52422E168B200A166B9 /* MKTrackClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A7D52322E168B200A166B9 /* MKTrackClient.swift */; };
+		29A7D52622E169CE00A166B9 /* MKTrackClientSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A7D52522E169CE00A166B9 /* MKTrackClientSupport.swift */; };
 		66E784766AF982D425309805 /* libPods-GGMusic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 867961AFDD9E7547DA502CA9 /* libPods-GGMusic.a */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +58,11 @@
 		29A7D51722DECB2300A166B9 /* MKConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKConstants.swift; sourceTree = "<group>"; };
 		29A7D51922DECF9A00A166B9 /* MKClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKClient.swift; sourceTree = "<group>"; };
 		29A7D51B22DED64300A166B9 /* MKPlaylistClientSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKPlaylistClientSupport.swift; sourceTree = "<group>"; };
+		29A7D51D22E0E4B500A166B9 /* PlaylistState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistState.swift; sourceTree = "<group>"; };
+		29A7D51F22E167DB00A166B9 /* MKTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKTrack.swift; sourceTree = "<group>"; };
+		29A7D52122E1686300A166B9 /* MKArtwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKArtwork.swift; sourceTree = "<group>"; };
+		29A7D52322E168B200A166B9 /* MKTrackClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKTrackClient.swift; sourceTree = "<group>"; };
+		29A7D52522E169CE00A166B9 /* MKTrackClientSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKTrackClientSupport.swift; sourceTree = "<group>"; };
 		66CD4571B44E2D7F21BF2B84 /* Pods-GGMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GGMusic.debug.xcconfig"; path = "Target Support Files/Pods-GGMusic/Pods-GGMusic.debug.xcconfig"; sourceTree = "<group>"; };
 		867961AFDD9E7547DA502CA9 /* libPods-GGMusic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GGMusic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFF19C86E7FBC66821BFE76B /* Pods-GGMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GGMusic.release.xcconfig"; path = "Target Support Files/Pods-GGMusic/Pods-GGMusic.release.xcconfig"; sourceTree = "<group>"; };
@@ -145,6 +155,7 @@
 				291BF6A922BA824E009ACCF8 /* MusicPlayerVC.swift */,
 				291BF6C822BAD3C4009ACCF8 /* SongListVC.swift */,
 				291BF6CC22BAD5CC009ACCF8 /* PlaylistCollectionVC.swift */,
+				29A7D51D22E0E4B500A166B9 /* PlaylistState.swift */,
 				291BF6CA22BAD3E8009ACCF8 /* LoginVC.swift */,
 			);
 			path = Controller;
@@ -161,6 +172,10 @@
 				29A7D51722DECB2300A166B9 /* MKConstants.swift */,
 				29A7D51922DECF9A00A166B9 /* MKClient.swift */,
 				29A7D51B22DED64300A166B9 /* MKPlaylistClientSupport.swift */,
+				29A7D51F22E167DB00A166B9 /* MKTrack.swift */,
+				29A7D52122E1686300A166B9 /* MKArtwork.swift */,
+				29A7D52322E168B200A166B9 /* MKTrackClient.swift */,
+				29A7D52522E169CE00A166B9 /* MKTrackClientSupport.swift */,
 			);
 			path = MusicKit;
 			sourceTree = "<group>";
@@ -264,12 +279,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29A7D52022E167DB00A166B9 /* MKTrack.swift in Sources */,
 				291BF6AA22BA824E009ACCF8 /* MusicPlayerVC.swift in Sources */,
+				29A7D51E22E0E4B500A166B9 /* PlaylistState.swift in Sources */,
 				29A7D51C22DED64300A166B9 /* MKPlaylistClientSupport.swift in Sources */,
 				291BF6CD22BAD5CC009ACCF8 /* PlaylistCollectionVC.swift in Sources */,
 				29A7D51A22DECF9A00A166B9 /* MKClient.swift in Sources */,
+				29A7D52622E169CE00A166B9 /* MKTrackClientSupport.swift in Sources */,
+				29A7D52422E168B200A166B9 /* MKTrackClient.swift in Sources */,
 				291BF6C722BAD358009ACCF8 /* DataController.swift in Sources */,
 				291BF6CB22BAD3E8009ACCF8 /* LoginVC.swift in Sources */,
+				29A7D52222E1686300A166B9 /* MKArtwork.swift in Sources */,
 				29A7D51422DEC85800A166B9 /* MKPlaylist.swift in Sources */,
 				291BF6A822BA824E009ACCF8 /* AppDelegate.swift in Sources */,
 				291BF6C922BAD3C4009ACCF8 /* SongListVC.swift in Sources */,

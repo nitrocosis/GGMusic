@@ -22,28 +22,5 @@ struct MKPlaylist: Codable {
 struct MKPlaylistAttributes: Codable {
     
     let name: String
-    let artwork: MKPlaylistArtwork
-}
-
-struct MKPlaylistArtwork: Codable {
-
-    let width: Int?
-    let height: Int?
-    let url: String
-}
-
-extension MKPlaylistArtwork {
-    
-    // Returns the fully qualified url to retrieve the image.
-    // Use this instead of MKPlaylistArtwork.url.
-    func getUrl() -> String {
-        var imageUrl = url
-        if (width != nil) {
-            imageUrl = imageUrl.replacingOccurrences(of: "{w}", with: "\(width!)")
-        }
-        if (height != nil) {
-            imageUrl = imageUrl.replacingOccurrences(of: "{h}", with: "\(height!)")
-        }
-        return imageUrl
-    }
+    let artwork: MKArtwork
 }
