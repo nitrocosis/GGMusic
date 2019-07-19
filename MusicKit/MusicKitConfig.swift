@@ -37,6 +37,10 @@ class MusicKitConfig {
         developerToken = config.developerToken
         userToken = config.userToken
         storeFrontCountryCode = config.storeFrontCountryCode
+        
+        if (setupComplete()) {
+            print("developerToken: \(developerToken) \nuserToken: \(userToken)")
+        }
     }
     
     func setupComplete() -> Bool {

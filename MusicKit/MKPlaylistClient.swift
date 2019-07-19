@@ -14,7 +14,7 @@ class MKPlaylistClient: MKClient {
     
     func taskForGetPlaylists(completion: @escaping (_ playlistResponse: AnyObject?, _ error: NSError?) -> Void) {
 
-        let request = createURL(MKConstants.Playlist)
+        let request = createURLRequest(MKConstants.Playlist)
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if error != nil {
                 self.sendError("Something went wrong, please try again", "taskForGetPlaylists", completion)
@@ -41,7 +41,7 @@ class MKPlaylistClient: MKClient {
     
     func taskForPostPlaylist(playlistName: String, completion: @escaping (_ playlistResponse: AnyObject?, _ error: NSError?) -> Void) {
         
-        var request = createURL(MKConstants.Playlist)
+        var request = createURLRequest(MKConstants.Playlist)
         request.httpMethod = "POST"
         request.httpBody = """
             {

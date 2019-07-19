@@ -10,7 +10,7 @@ import Foundation
 
 class MKClient {
     
-    func createURL(_ url: String) -> URLRequest {
+    func createURLRequest(_ url: String) -> URLRequest {
         let url = URL(string: MKConstants.BaseURL + url)!
         var request = URLRequest(url: url)
         request.setValue("Bearer " + MusicKitConfig.shared.developerToken, forHTTPHeaderField: MKConstants.DeveloperToken)
