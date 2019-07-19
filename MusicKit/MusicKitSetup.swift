@@ -24,13 +24,18 @@ class MusicKitSetup: NSObject, SKCloudServiceSetupViewControllerDelegate {
         
         cloudServiceController.requestCapabilities { capabilities, capabilitiesError in
             if capabilities.contains(.musicCatalogPlayback) {
+                print("User has Apple Music account. Load the config.")
                 // User has Apple Music account. Load the config.
                 MusicKitConfig.shared.loadConfig(success, error)
             }
             else if capabilities.contains(.musicCatalogSubscriptionEligible) {
-                // User can sign up to Apple Music
+                print("User can sign up to Apple Music.")
+                // User can sign up to Apple Music.
                 self.signupScreenDismissed = signupScreenDismissed
                 self.showAppleMusicSignup(callerVC)
+            } else {
+                print("User cannot use this app.")
+                error()
             }
         }
     }

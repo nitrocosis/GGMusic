@@ -63,6 +63,7 @@
 		29A7D52122E1686300A166B9 /* MKArtwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKArtwork.swift; sourceTree = "<group>"; };
 		29A7D52322E168B200A166B9 /* MKTrackClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKTrackClient.swift; sourceTree = "<group>"; };
 		29A7D52522E169CE00A166B9 /* MKTrackClientSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKTrackClientSupport.swift; sourceTree = "<group>"; };
+		29A7D52722E170C300A166B9 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		66CD4571B44E2D7F21BF2B84 /* Pods-GGMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GGMusic.debug.xcconfig"; path = "Target Support Files/Pods-GGMusic/Pods-GGMusic.debug.xcconfig"; sourceTree = "<group>"; };
 		867961AFDD9E7547DA502CA9 /* libPods-GGMusic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GGMusic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFF19C86E7FBC66821BFE76B /* Pods-GGMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GGMusic.release.xcconfig"; path = "Target Support Files/Pods-GGMusic/Pods-GGMusic.release.xcconfig"; sourceTree = "<group>"; };
@@ -100,6 +101,7 @@
 		291BF69B22BA824E009ACCF8 = {
 			isa = PBXGroup;
 			children = (
+				29A7D52722E170C300A166B9 /* README.md */,
 				29A7D50E22D82FE700A166B9 /* MusicKit */,
 				29A7D50C22D82C9900A166B9 /* Podfile */,
 				291BF6A622BA824E009ACCF8 /* GGMusic */,

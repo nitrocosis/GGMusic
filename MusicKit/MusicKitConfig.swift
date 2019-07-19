@@ -37,8 +37,6 @@ class MusicKitConfig {
         developerToken = config.developerToken
         userToken = config.userToken
         storeFrontCountryCode = config.storeFrontCountryCode
-        
-        print("MusicKitConfig setup;\ndeveloperToken: \(developerToken!) \nuserToken: \(userToken!)")
     }
     
     func setupComplete() -> Bool {
