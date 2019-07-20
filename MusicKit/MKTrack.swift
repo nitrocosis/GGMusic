@@ -13,6 +13,16 @@ struct MKTrackResponse: Codable {
     let data: [MKTrack]
 }
 
+struct MKTrackSearchResponse: Codable {
+    
+    let results: MKTrackSearchResults
+}
+
+struct MKTrackSearchResults: Codable {
+    
+    let songs: MKTrackResponse
+}
+
 struct MKTrack: Codable {
     
     let id: String

@@ -16,4 +16,11 @@ class MKConstants {
     static let BaseURL = "https://api.music.apple.com/v1/"
     static let Playlist = "me/library/playlists/"
     static let Tracks = "/tracks"
+    static let Catalog = "catalog/"
+    static let Search = "/search"
+    
+    static let Term = "term"
+    static let Types = "types"
+    
+    static let Songs = "songs"
 }
