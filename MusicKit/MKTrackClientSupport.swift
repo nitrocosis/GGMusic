@@ -19,4 +19,14 @@ extension MKTrackClient {
             }
         }
     }
+    
+    func addTracks(playlistId: String, tracks: [MKTrack], completion: @escaping (_ trackResponse: AnyObject?, _ error: NSError?) -> Void) {
+        taskForPostTracks(playlistId: playlistId, tracks: tracks) { (addTrackResponse, error) in
+            if let error = error {
+                completion(nil, error as NSError)
+            } else {
+                completion(addTrackResponse, nil)
+            }
+        }
+    }
 }

@@ -16,6 +16,7 @@ struct MKTrackResponse: Codable {
 struct MKTrack: Codable {
     
     let id: String
+    let type: String
     let attributes: MKTrackAttributes
 }
 
@@ -25,4 +26,22 @@ struct MKTrackAttributes: Codable {
     let artistName: String
     let albumName: String
     let artwork: MKArtwork
+}
+
+struct MKAddTracksToPlaylistRequest: Codable {
+    
+    let data: [MKTrackForRequest]
+}
+
+struct MKTrackForRequest: Codable {
+    
+    let id: String
+    let type: String
+}
+
+extension MKTrack {
+    
+    func forRequest() -> MKTrackForRequest {
+        return MKTrackForRequest(id: id, type: type)
+    }
 }

@@ -21,8 +21,6 @@ class PlaylistCollectionVC: UIViewController {
     
     var playlists: [Playlist]?
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
