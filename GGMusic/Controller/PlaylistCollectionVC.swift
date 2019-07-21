@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 import UIKit
 
 //downloads playlists from Spotify + allows creation of own playlists (pop up with title)
@@ -19,10 +20,46 @@ class PlaylistCollectionVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
-    var playlists: [Playlist]?
+    var playlists: [Playlist] = Array()
+    
+    var state = PlaylistState.loading {
+        didSet {
+            playlists = Array()
+            
+            switch state {
+            case .loading:
+                let activityIndicator = UIActivityIndicatorView(style: .gray)
+                activityIndicator.center = collectionView.center
+                collectionView.backgroundView  = activityIndicator
+                activityIndicator.startAnimating()
+                
+            case .populated(let resultPlaylists):
+                collectionView.backgroundView = nil
+                playlists = resultPlaylists
+                self.savePlaylists()
+
+            case .empty:
+                let frame = CGRect(x: 0, y: 0, width: collectionView.bounds.size.width, height: collectionView.bounds.size.height)
+                let noDataLabel = UILabel(frame: frame)
+                noDataLabel.text = NSLocalizedString("No playlists", comment: "")
+                noDataLabel.textAlignment = .center
+                collectionView.backgroundView  = noDataLabel
+                
+            case .error(let error):
+                let frame = CGRect(x: 0, y: 0, width: collectionView.bounds.size.width, height: collectionView.bounds.size.height)
+                let errorLabel = UILabel(frame: frame)
+                errorLabel.text = error.localizedDescription
+                errorLabel.textAlignment = .center
+                collectionView.backgroundView  = errorLabel
+            }
+            
+            self.collectionView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupCollectionView()
         
         // Immediately show playlists in core data, if any.
         showPlaylists()
@@ -32,33 +69,69 @@ class PlaylistCollectionVC: UIViewController {
     }
     
     private func showPlaylists() {
-        // TODO Hide the loading state and show the Playlists (populated state) in the collection view.
-        // TODO If there are no Playlists, show the empty state.
+        // Hide the loading state and show the Playlists (populated state) in the collection view.
+        let playlistsFromCoreData = getPlaylistsFromCoreData()
+        if (playlistsFromCoreData.count > 0) {
+            state = .populated(playlistsFromCoreData)
+        } else {
+            // If there are no Playlists, show the empty state.
+            state = .empty
+        }
+    }
+    
+    private func getPlaylistsFromCoreData() -> [Playlist] {
+        let playlistsRequest: NSFetchRequest<Playlist> = Playlist.fetchRequest()
+        return try! dataController.viewContext.fetch(playlistsRequest)
     }
     
     private func getPlaylists() {
-        // TODO Show loading state if there are currently no Playlists shown in the collection view.
+        // Show loading state if there are currently no Playlists shown in the collection view.
+        let noPlaylists = playlists.count == 0
+        if (noPlaylists) {
+            state = .loading
+        }
+        
         MKPlaylistClient.shared.getPlaylists() { (playlistResponse, error) in
-            if (error != nil) {
-                print("ERROR - getPlaylists: \(error)")
-                // TODO If there is an error and there are no Playlists in core data, show the error state.
-                // TODO If there is an error but there are Playlists in core data, do nothing.
-            } else {
-                print("SUCCESS - getPlaylists: \(playlistResponse)")
-                // Delete all of the Playlists from core data.
-                // TODO
-                // Create the Playlist core data objects from the playlistResponse.
-                // TODO
-                // Save the Playlists.
-                self.savePlaylists()
-                // Populate the collection view with the Playlists.
-                self.showPlaylists()
+            DispatchQueue.main.async {
+                if (error != nil) {
+                    // If there is an error and there are no Playlists in core data, show the error state.
+                    if (noPlaylists) {
+                        self.state = .error(error!)
+                    }
+                    // If there is an error but there are Playlists in core data, do nothing.
+                } else {
+                    // Delete all of the Playlists from core data.
+                    self.deletePlaylists()
+                    // Create the Playlist core data objects from the playlistResponse.
+                    self.savePlaylists(playlistResponse!.data)
+                    // Save the Playlists.
+                    self.savePlaylists()
+                    // Populate the collection view with the Playlists.
+                    self.showPlaylists()
+                }
             }
         }
     }
     
+    private func savePlaylists(_ mkPlaylists: [MKPlaylist]) {
+        for mkPlaylist in mkPlaylists {
+            let playlist = Playlist(context: dataController.viewContext)
+            playlist.id = mkPlaylist.id
+            playlist.name = mkPlaylist.attributes.name
+            playlist.url = mkPlaylist.attributes.artwork.getUrl()
+        }
+        savePlaylists()
+    }
+    
     private func savePlaylists() {
         try? dataController.viewContext.save()
+    }
+    
+    private func deletePlaylists() {
+        for playlist in playlists {
+            dataController.viewContext.delete(playlist)
+        }
+        savePlaylists()
     }
     
     @IBAction func cancelButton(_ sender: Any) {
@@ -113,17 +186,45 @@ class PlaylistCollectionVC: UIViewController {
         //hold to delete playlist with alert
     }
     
+    private func setupCollectionView() {
+        collectionView.dataSource = self as UICollectionViewDataSource
+        collectionView.delegate = self as UICollectionViewDelegate
+        collectionView.allowsMultipleSelection = false
+        setupCollectionViewLayout()
+    }
+    
+    private func setupCollectionViewLayout() {
+        let itemsPerRow: CGFloat = 3
+        let itemsPadding: CGFloat = 5.0
+        
+        let paddingSpace = itemsPadding * (itemsPerRow + 1)
+        let availableWidth = view.frame.width - paddingSpace
+        let widthPerItem = availableWidth / itemsPerRow
+        
+        flowLayout.itemSize = CGSize(width: widthPerItem, height: widthPerItem)
+        flowLayout.minimumLineSpacing = itemsPadding
+        flowLayout.minimumInteritemSpacing = itemsPadding
+        
+        collectionView.contentInset = UIEdgeInsets(top: itemsPadding,
+                                                   left: itemsPadding,
+                                                   bottom: itemsPadding,
+                                                   right: itemsPadding)
+    }
 }
 
 extension PlaylistCollectionVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // TODO
-        return 1
+        return playlists.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaylistCellReuseIdentifier, for: indexPath)
+        let activityIndicator = UIActivityIndicatorView(style: .gray)
+        activityIndicator.center = collectionView.center
+        cell.backgroundView = activityIndicator
+        activityIndicator.startAnimating()
+        
         return cell
     }
     
@@ -132,7 +233,29 @@ extension PlaylistCollectionVC: UICollectionViewDataSource {
 extension PlaylistCollectionVC: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(_:))))
         
+        let playlist = playlists[indexPath.row] as Playlist
+        
+        // TODO set cell label
+        
+        let imageView = UIImageView(image: UIImage(named: "placeholder.jpeg"))
+        cell.backgroundView = imageView
+        
+        let imageURL = URL(string: playlist.url!)!
+        URLSession.shared.dataTask(with: imageURL) { (data, _, _) in
+            if let data = data {
+                let image = UIImage(data: data)
+                
+                DispatchQueue.main.async {
+                    imageView.image = image
+                }
+            }
+        }.resume()
+    }
+    
+    @objc func tap(_ sender: UITapGestureRecognizer) {
+        // TODO
     }
 }
 
