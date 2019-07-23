@@ -15,11 +15,12 @@ import UIKit
 class PlaylistCollectionVC: UIViewController {
     
     private let PlaylistCellReuseIdentifier = "Cell"
-    var dataController: DataController!
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    @IBOutlet weak var playlistNameLabel: UILabel!
     
+    var dataController: DataController!
     var playlists: [Playlist] = Array()
     
     var state = PlaylistState.loading {
@@ -134,6 +135,11 @@ class PlaylistCollectionVC: UIViewController {
         savePlaylists()
     }
     
+    private func storeImageData(_ imageData: Data, _ playlist: Playlist) {
+        playlist.image = imageData
+        savePlaylists()
+    }
+    
     @IBAction func cancelButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -182,10 +188,6 @@ class PlaylistCollectionVC: UIViewController {
         }
     }
     
-    func holdToDelete() {
-        //hold to delete playlist with alert
-    }
-    
     private func setupCollectionView() {
         collectionView.dataSource = self as UICollectionViewDataSource
         collectionView.delegate = self as UICollectionViewDelegate
@@ -219,15 +221,8 @@ extension PlaylistCollectionVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaylistCellReuseIdentifier, for: indexPath)
-        let activityIndicator = UIActivityIndicatorView(style: .gray)
-        activityIndicator.center = collectionView.center
-        cell.backgroundView = activityIndicator
-        activityIndicator.startAnimating()
-        
-        return cell
+        return collectionView.dequeueReusableCell(withReuseIdentifier: PlaylistCellReuseIdentifier, for: indexPath)
     }
-    
 }
 
 extension PlaylistCollectionVC: UICollectionViewDelegate {
@@ -235,27 +230,40 @@ extension PlaylistCollectionVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(_:))))
         
+        let collectionViewCell = cell as! CollectionViewCell
         let playlist = playlists[indexPath.row] as Playlist
         
-        // TODO set cell label
+        collectionViewCell.label.text = playlist.name
         
-        let imageView = UIImageView(image: UIImage(named: "placeholder.jpeg"))
-        cell.backgroundView = imageView
+        guard let imageURL = URL(string: playlist.url!) else { return }
         
-        let imageURL = URL(string: playlist.url!)!
-        URLSession.shared.dataTask(with: imageURL) { (data, _, _) in
-            if let data = data {
-                let image = UIImage(data: data)
-                
-                DispatchQueue.main.async {
-                    imageView.image = image
-                }
+        if let imageData = playlist.image {
+            DispatchQueue.main.async {
+                collectionViewCell.imageView.image = UIImage(data: imageData)
             }
-        }.resume()
+        } else {
+            URLSession.shared.dataTask(with: imageURL) { (data, _, _) in
+                if let imageData = data {
+                    self.storeImageData(imageData, playlist)
+                    DispatchQueue.main.async {
+                        collectionViewCell.imageView.image = UIImage(data: imageData)
+                    }
+                }
+            }.resume()
+        }
     }
     
     @objc func tap(_ sender: UITapGestureRecognizer) {
-        // TODO
+        let location = sender.location(in: self.collectionView)
+        let indexPath = self.collectionView.indexPathForItem(at: location)!
+        let index = (indexPath.section * 3) + indexPath.row
+        let playlist = playlists[index] as Playlist
+        
+        let controller = self.storyboard!.instantiateViewController(withIdentifier: "SongListVC")
+        let songListVC = controller as! SongListVC
+        songListVC.dataController = self.dataController
+        songListVC.playlist = playlist
+        self.present(controller, animated: true, completion: nil)
     }
 }
 

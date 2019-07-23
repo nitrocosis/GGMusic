@@ -95,14 +95,14 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="x7r-fm-HyT">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="x7r-fm-HyT" customClass="CollectionViewCell" customModule="GGMusic" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="137" height="130"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="137" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DD1-VI-W8Y">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholder.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="DD1-VI-W8Y">
                                                     <rect key="frame" x="0.0" y="2" width="137" height="103"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -115,6 +115,10 @@
                                                 </label>
                                             </subviews>
                                         </view>
+                                        <connections>
+                                            <outlet property="imageView" destination="DD1-VI-W8Y" id="Shc-6k-bIb"/>
+                                            <outlet property="label" destination="hjP-yV-7Uv" id="VSt-k3-vs4"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -162,7 +166,7 @@
         <!--Song ListVC-->
         <scene sceneID="Arb-ra-HuD">
             <objects>
-                <viewController id="mqb-om-nPh" customClass="SongListVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SongListVC" id="mqb-om-nPh" customClass="SongListVC" customModule="GGMusic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UrB-1Z-RXv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -331,4 +335,7 @@
             <point key="canvasLocation" x="1370" y="18"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="placeholder.jpeg" width="700" height="700"/>
+    </resources>
 </document>

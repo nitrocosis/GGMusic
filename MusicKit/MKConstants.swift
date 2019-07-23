@@ -21,6 +21,7 @@ class MKConstants {
     
     static let Term = "term"
     static let Types = "types"
+    static let Limit = "limit"
     
     static let Songs = "songs"
 }
