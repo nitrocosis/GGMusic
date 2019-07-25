@@ -22,20 +22,35 @@ class MusicKitSetup: NSObject, SKCloudServiceSetupViewControllerDelegate {
                       error: @escaping () -> Void,
                       signupScreenDismissed: @escaping () -> Void) {
         
-        cloudServiceController.requestCapabilities { capabilities, capabilitiesError in
-            if capabilities.contains(.musicCatalogPlayback) {
-                print("User has Apple Music account. Load the config.")
-                // User has Apple Music account. Load the config.
-                MusicKitConfig.shared.loadConfig(success, error)
-            }
-            else if capabilities.contains(.musicCatalogSubscriptionEligible) {
-                print("User can sign up to Apple Music.")
-                // User can sign up to Apple Music.
-                self.signupScreenDismissed = signupScreenDismissed
-                self.showAppleMusicSignup(callerVC)
-            } else {
-                print("User cannot use this app.")
+        SKCloudServiceController.requestAuthorization { (status) in
+            switch (status) {
+            case .notDetermined:
+                print("STATUS - not determined")
                 error()
+            case .denied:
+                print("STATUS - denied")
+                error()
+            case .restricted:
+                print("STATUS - restricted")
+                error()
+            case .authorized:
+                print("STATUS - authorized")
+                self.cloudServiceController.requestCapabilities { capabilities, capabilitiesError in
+                    if capabilities.contains(.musicCatalogPlayback) {
+                        print("User has Apple Music account. Load the config.")
+                        // User has Apple Music account. Load the config.
+                        MusicKitConfig.shared.loadConfig(success, error)
+                    }
+                    else if capabilities.contains(.musicCatalogSubscriptionEligible) {
+                        print("User can sign up to Apple Music.")
+                        // User can sign up to Apple Music.
+                        self.signupScreenDismissed = signupScreenDismissed
+                        self.showAppleMusicSignup(callerVC)
+                    } else {
+                        print("User cannot use this app: \(capabilitiesError?.localizedDescription).")
+                        error()
+                    }
+                }
             }
         }
     }

@@ -224,6 +224,11 @@ public extension CryptorRSA {
 	///
 	static func stripX509CertificateHeader(for keyData: Data) throws -> Data {
 		
+		// If private key in pkcs8 format, strip the header
+		if keyData[26] == 0x30 {
+			return(keyData.advanced(by: 26))
+		}
+		
 		let count = keyData.count / MemoryLayout<CUnsignedChar>.size
 		
 		guard count > 0 else {
@@ -231,7 +236,7 @@ public extension CryptorRSA {
 			throw Error(code: ERR_STRIP_PK_HEADER, reason: "Provided public key is empty")
 		}
 		
-		var byteArray = [UInt8](keyData)
+		let byteArray = [UInt8](keyData)
 		
 		var index = 0
 		guard byteArray[index] == 0x30 else {

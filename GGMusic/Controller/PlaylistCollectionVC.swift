@@ -101,12 +101,13 @@ class PlaylistCollectionVC: UIViewController {
                     }
                     // If there is an error but there are Playlists in core data, do nothing.
                 } else {
-                    // Delete all of the Playlists from core data.
-                    self.deletePlaylists()
+                    // Delete all of the Playlists from core data that are not in the playlistResponse
+                    // if they are expired (past 20 seconds).
+                    // TODO this isn't working. Playlists deleted in apple music remain in here!!!
+                    // TODO sort playlists alphabetically
+                    self.deleteExpiredPlaylists(playlistResponse!.data)
                     // Create the Playlist core data objects from the playlistResponse.
                     self.savePlaylists(playlistResponse!.data)
-                    // Save the Playlists.
-                    self.savePlaylists()
                     // Populate the collection view with the Playlists.
                     self.showPlaylists()
                 }
@@ -116,21 +117,43 @@ class PlaylistCollectionVC: UIViewController {
     
     private func savePlaylists(_ mkPlaylists: [MKPlaylist]) {
         for mkPlaylist in mkPlaylists {
-            let playlist = Playlist(context: dataController.viewContext)
-            playlist.id = mkPlaylist.id
-            playlist.name = mkPlaylist.attributes.name
-            playlist.url = mkPlaylist.attributes.artwork.getUrl()
+            let mkPlaylistNotInPlaylists = !playlists.contains { (playlist) -> Bool in
+                mkPlaylist.id == playlist.id!
+            }
+            
+            if (mkPlaylistNotInPlaylists) {
+                createPlaylist(from: mkPlaylist)
+            }
         }
         savePlaylists()
+    }
+    
+    private func createPlaylist(from mkPlaylist: MKPlaylist) -> Playlist {
+        let playlist = Playlist(context: dataController.viewContext)
+        playlist.id = mkPlaylist.id
+        playlist.name = mkPlaylist.attributes.name
+        playlist.url = mkPlaylist.attributes.artwork.getUrl()
+        playlist.created = Date()
+        return playlist
     }
     
     private func savePlaylists() {
         try? dataController.viewContext.save()
     }
     
-    private func deletePlaylists() {
+    private func deleteExpiredPlaylists(_ mkPlaylists: [MKPlaylist]) {
         for playlist in playlists {
-            dataController.viewContext.delete(playlist)
+            let playlistNotInMKPlaylist = !mkPlaylists.contains { (mkPlaylist) -> Bool in
+                playlist.id! == mkPlaylist.id
+            }
+            
+            let currentDate = Date()
+            let date20SecAfterCreated = currentDate.addingTimeInterval(20)
+            let playlistIsExpired = currentDate > date20SecAfterCreated
+            
+            if (playlistNotInMKPlaylist && playlistIsExpired) {
+                dataController.viewContext.delete(playlist)
+            }
         }
         savePlaylists()
     }
@@ -178,12 +201,20 @@ class PlaylistCollectionVC: UIViewController {
     }
     
     func createPlaylist(name: String) {
-        //create empty playlist with Placeholder img and name as label and save to core data
+        showActivityIndicator()
         MKPlaylistClient.shared.postPlaylist(name: name) { (playlistResponse, error) in
-            if (error != nil) {
-                // TODO
-            } else {
-                // TODO
+            DispatchQueue.main.async {
+                self.dismissActivityIndicator()
+                if (error != nil) {
+                    self.displayError(error?.description)
+                } else {
+                    // Create empty playlist with Placeholder img and name as label and save to core data.
+                    // Then, reload the collection view.
+                    let playlist = self.createPlaylist(from: playlistResponse!.data[0])
+                    self.savePlaylists()
+                    self.playlists.append(playlist)
+                    self.collectionView.reloadData()
+                }
             }
         }
     }

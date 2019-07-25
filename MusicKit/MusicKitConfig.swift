@@ -48,24 +48,9 @@ class MusicKitConfig {
     }
     
     func loadConfig(_ success: @escaping () -> Void, _ error: @escaping () -> Void) {
-        SKCloudServiceController.requestAuthorization { (status) in
-            switch (status) {
-            case .notDetermined:
-                print("STATUS - not determined")
-                error()
-            case .denied:
-                print("STATUS - denied")
-                error()
-            case .restricted:
-                print("STATUS - restricted")
-                error()
-            case .authorized:
-                print("STATUS - authorized")
-                self.loadDeveloperToken()
-                self.loadStoreFrontCountryCode()
-                self.loadUserToken(success, error)
-            }
-        }
+        self.loadDeveloperToken()
+        self.loadStoreFrontCountryCode()
+        self.loadUserToken(success, error)
     }
     
     /*
@@ -153,7 +138,7 @@ class MusicKitConfig {
     }
     
     private func createDeveloperToken() -> String {
-        let header = Header(kid: "B4AA2JUBGC")
+        let header = Header(kid: "83G58KT5GU")
         
         struct MyClaims: Claims {
             let iss: String
@@ -163,12 +148,12 @@ class MusicKitConfig {
         let claims = MyClaims(
             iss: "4VH6W5AH99",
             iat: Date(),
-            exp: Calendar.current.date(byAdding: .month, value: 6, to: Date())!
+            exp: Calendar.current.date(byAdding: .month, value: 3, to: Date())!
         )
         
         var jwt = JWT(header: header, claims: claims)
         
-        let keyFilePath = Bundle.main.path(forResource: "AuthKey_B4AA2JUBGC", ofType: "p8")!
+        let keyFilePath = Bundle.main.path(forResource: "AuthKey_83G58KT5GU", ofType: "p8")!
         let keyFileUrl = URL(fileURLWithPath: keyFilePath)
         let privateKey = try! String(contentsOf: keyFileUrl).data(using: .utf8)!
         
