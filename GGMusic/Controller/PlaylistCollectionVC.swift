@@ -82,6 +82,7 @@ class PlaylistCollectionVC: UIViewController {
     
     private func getPlaylistsFromCoreData() -> [Playlist] {
         let playlistsRequest: NSFetchRequest<Playlist> = Playlist.fetchRequest()
+        playlistsRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         return try! dataController.viewContext.fetch(playlistsRequest)
     }
     
@@ -103,8 +104,6 @@ class PlaylistCollectionVC: UIViewController {
                 } else {
                     // Delete all of the Playlists from core data that are not in the playlistResponse
                     // if they are expired (past 20 seconds).
-                    // TODO this isn't working. Playlists deleted in apple music remain in here!!!
-                    // TODO sort playlists alphabetically
                     self.deleteExpiredPlaylists(playlistResponse!.data)
                     // Create the Playlist core data objects from the playlistResponse.
                     self.savePlaylists(playlistResponse!.data)
@@ -120,6 +119,8 @@ class PlaylistCollectionVC: UIViewController {
             let mkPlaylistNotInPlaylists = !playlists.contains { (playlist) -> Bool in
                 mkPlaylist.id == playlist.id!
             }
+            
+            print("mkPlaylist: \(mkPlaylist.attributes.name), mkPlaylistNotInPlaylists? \(mkPlaylistNotInPlaylists)")
             
             if (mkPlaylistNotInPlaylists) {
                 createPlaylist(from: mkPlaylist)
@@ -142,17 +143,20 @@ class PlaylistCollectionVC: UIViewController {
     }
     
     private func deleteExpiredPlaylists(_ mkPlaylists: [MKPlaylist]) {
-        for playlist in playlists {
+        for (index, playlist) in playlists.enumerated() {
             let playlistNotInMKPlaylist = !mkPlaylists.contains { (mkPlaylist) -> Bool in
                 playlist.id! == mkPlaylist.id
             }
             
             let currentDate = Date()
-            let date20SecAfterCreated = currentDate.addingTimeInterval(20)
+            let date20SecAfterCreated = playlist.created!.addingTimeInterval(20)
             let playlistIsExpired = currentDate > date20SecAfterCreated
+            
+            print("playlist: \(playlist.name), playlistNotInMKPlaylist? \(playlistNotInMKPlaylist), playlistIsExpired? \(playlistIsExpired)")
             
             if (playlistNotInMKPlaylist && playlistIsExpired) {
                 dataController.viewContext.delete(playlist)
+                playlists.remove(at: index)
             }
         }
         savePlaylists()
@@ -213,6 +217,7 @@ class PlaylistCollectionVC: UIViewController {
                     let playlist = self.createPlaylist(from: playlistResponse!.data[0])
                     self.savePlaylists()
                     self.playlists.append(playlist)
+                    self.playlists.sort(by: { $0.name! <= $1.name! })
                     self.collectionView.reloadData()
                 }
             }
