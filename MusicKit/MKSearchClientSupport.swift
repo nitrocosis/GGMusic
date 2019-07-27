@@ -16,8 +16,12 @@ extension MKSearchClient {
                 completion(nil, error as NSError)
             } else {
                 let response = searchResponse as? MKTrackSearchResponse
-                let trackResponse = response?.results.songs
-                completion(trackResponse, nil)
+                let trackResponse = response?.results?.songs
+                if (trackResponse == nil) {
+                    completion(MKTrackResponse(data: []), nil)
+                } else {
+                    completion(trackResponse, nil)
+                }
             }
         }
     }

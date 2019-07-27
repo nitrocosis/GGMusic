@@ -10,16 +10,15 @@ import Foundation
 import UIKit
 //Shuffle and play buttons. list of songs in playlist. search bar allows you to search for spotify songs and add to current playlist.
 
-class SongListVC: UIViewController {
+class SongListVC: UIViewController, UISearchBarDelegate {
     
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var playlistTitleLabel: UILabel!
-    @IBOutlet weak var playButton: UIButton!
-    @IBOutlet weak var shuffleButton: UIButton!
     
     var dataController: DataController!
     var playlist: Playlist!
+    var searchResults: [MKTrack]?
     
     var state = SongListState.loading {
         didSet {
@@ -38,7 +37,7 @@ class SongListVC: UIViewController {
             case .empty:
                 let frame = CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height)
                 let noDataLabel = UILabel(frame: frame)
-                noDataLabel.text = NSLocalizedString("No playlists", comment: "")
+                noDataLabel.text = NSLocalizedString("No songs", comment: "")
                 noDataLabel.textAlignment = .center
                 tableView.backgroundView  = noDataLabel
                 
@@ -56,6 +55,9 @@ class SongListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        playlistTitleLabel.text = playlist.name
+        searchBar.delegate = self
+        
         setupTableView()
         
         // Immediately show songs of the playlist in core data, if any.
@@ -158,8 +160,55 @@ class SongListVC: UIViewController {
         savePlaylist()
     }
     
-    @IBAction func cancel(_ sender: Any) {
+    private func showSearchResults() {
+        if (searchResults == nil || searchResults!.isEmpty) {
+            displayError("No songs found!")
+            return
+        }
+        
+        // show search results in the table view
+        tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let term = searchBar.text
+        if (term == nil || term!.isEmpty) {
+            return
+        }
+        
+        showActivityIndicator()
+        MKSearchClient.shared.searchTracks(term: term!) { (trackResponse, error) in
+            DispatchQueue.main.async {
+                self.dismissActivityIndicator()
+                if (error != nil) {
+                    self.searchResults = nil
+                    self.displayError(error!.description)
+                } else {
+                    if (trackResponse != nil && trackResponse!.data.isEmpty) {
+                        self.displayError("No results!")
+                    } else {
+                        self.searchResults = trackResponse?.data
+                        self.showSearchResults()
+                    }
+                }
+            }
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        // TODO
+    }
+    
+    @IBAction func cancelButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func playButton(_ sender: Any) {
+        // TODO
+    }
+    
+    @IBAction func shuffleButton(_ sender: Any) {
+        // TODO
     }
     
     private func setupTableView() {
@@ -172,6 +221,9 @@ class SongListVC: UIViewController {
 extension SongListVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (searchResults != nil && !searchResults!.isEmpty) {
+            return searchResults!.count
+        }
         return playlist.song!.count
     }
     
@@ -186,9 +238,19 @@ extension SongListVC: UITableViewDelegate {
         cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(_:))))
         
         let tableViewCell = cell as! TableViewCell
-        let songs = playlist.song!.allObjects as! [Song]
-        let song = songs[indexPath.row] as Song
         
+        if (searchResults != nil && !searchResults!.isEmpty) {
+            let mkTrack = searchResults![indexPath.row]
+            loadTableViewCell(with: mkTrack, tableViewCell)
+        } else {
+            let songs = playlist.song!.allObjects as! [Song]
+            let song = songs[indexPath.row] as Song
+            loadTableViewCell(with: song, tableViewCell)
+        }
+    }
+    
+    // TODO Hide add button in cell.
+    private func loadTableViewCell(with song: Song, _ tableViewCell: TableViewCell) {
         tableViewCell.songName.text = song.name
         tableViewCell.artistName.text = song.artistName
         
@@ -206,8 +268,24 @@ extension SongListVC: UITableViewDelegate {
                         tableViewCell.songImage.image = UIImage(data: imageData)
                     }
                 }
-                }.resume()
+            }.resume()
         }
+    }
+    
+    // TODO Show add button in cell.
+    private func loadTableViewCell(with mkTrack: MKTrack, _ tableViewCell: TableViewCell) {
+        tableViewCell.songName.text = mkTrack.attributes?.name
+        tableViewCell.artistName.text = mkTrack.attributes?.artistName
+        
+        guard let imageURL = URL(string: (mkTrack.attributes?.artwork?.getUrl())!) else { return }
+        
+        URLSession.shared.dataTask(with: imageURL) { (data, _, _) in
+            if let imageData = data {
+                DispatchQueue.main.async {
+                    tableViewCell.songImage.image = UIImage(data: imageData)
+                }
+            }
+            }.resume()
     }
     
     @objc func tap(_ sender: UITapGestureRecognizer) {

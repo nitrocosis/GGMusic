@@ -16,11 +16,11 @@ struct MKPlaylistResponse: Codable {
 struct MKPlaylist: Codable {
     
     let id: String
-    let attributes: MKPlaylistAttributes
+    let attributes: MKPlaylistAttributes?
 }
 
 struct MKPlaylistAttributes: Codable {
     
     let name: String
-    let artwork: MKArtwork
+    let artwork: MKArtwork?
 }

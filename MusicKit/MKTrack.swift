@@ -20,12 +20,12 @@ struct MKAddTracksToPlaylistRequest: Codable {
 
 struct MKTrackSearchResponse: Codable {
     
-    let results: MKTrackSearchResults
+    let results: MKTrackSearchResults?
 }
 
 struct MKTrackSearchResults: Codable {
     
-    let songs: MKTrackResponse
+    let songs: MKTrackResponse?
 }
 
 struct MKTrack: Codable {

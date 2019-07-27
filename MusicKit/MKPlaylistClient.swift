@@ -15,7 +15,6 @@ class MKPlaylistClient: MKClient {
     func taskForGetPlaylists(completion: @escaping (_ playlistResponse: AnyObject?, _ error: NSError?) -> Void) {
 
         let request = createURLRequest("\(MKConstants.Playlist)?\(MKConstants.Limit)=100")
-        
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if error != nil {
                 self.sendError("Something went wrong, please try again", "taskForGetPlaylists", completion)

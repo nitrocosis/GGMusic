@@ -17,6 +17,7 @@ class MKSearchClient: MKClient {
         let storeFront = MusicKitConfig.shared.storeFrontCountryCode!
         let request = createURLRequest("\(MKConstants.Catalog)\(storeFront)\(MKConstants.Search)"
                                         + "?\(MKConstants.Types)=\(MKConstants.Songs)"
+                                        + "&\(MKConstants.Limit)=\(MKConstants.SearchLimit)"
                                         + "&\(MKConstants.Term)=\(term)")
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in

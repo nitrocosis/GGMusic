@@ -127,8 +127,8 @@ class PlaylistCollectionVC: UIViewController {
     private func createPlaylist(from mkPlaylist: MKPlaylist) -> Playlist {
         let playlist = Playlist(context: dataController.viewContext)
         playlist.id = mkPlaylist.id
-        playlist.name = mkPlaylist.attributes.name
-        playlist.url = mkPlaylist.attributes.artwork.getUrl()
+        playlist.name = mkPlaylist.attributes?.name
+        playlist.url = mkPlaylist.attributes?.artwork?.getUrl()
         playlist.created = Date()
         return playlist
     }

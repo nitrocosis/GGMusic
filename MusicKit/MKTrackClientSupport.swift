@@ -15,7 +15,12 @@ extension MKTrackClient {
             if let error = error {
                 completion(nil, error as NSError)
             } else {
-                completion(trackResponse as? MKTrackResponse, nil)
+                if (trackResponse == nil) {
+                    // nil response and error means no songs
+                    completion(MKTrackResponse(data: []), nil)
+                } else {
+                    completion(trackResponse as? MKTrackResponse, nil)
+                }
             }
         }
     }

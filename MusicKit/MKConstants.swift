@@ -24,4 +24,5 @@ class MKConstants {
     static let Limit = "limit"
     
     static let Songs = "songs"
+    static let SearchLimit = 25
 }

@@ -15,6 +15,7 @@ class MKTrackClient: MKClient {
     func taskForGetTracks(playlistId: String, completion: @escaping (_ trackResponse: AnyObject?, _ error: NSError?) -> Void) {
         
         let request = createURLRequest("\(MKConstants.Playlist)\(playlistId)\(MKConstants.Tracks)")
+        
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if error != nil {
                 self.sendError("Something went wrong, please try again", "taskForGetTracks", completion)
@@ -30,6 +31,10 @@ class MKTrackClient: MKClient {
                 let decoder = JSONDecoder()
                 let result = try! decoder.decode(MKTrackResponse.self, from: data!)
                 completion(result as AnyObject, nil)
+            }
+            else if httpStatusCode == 404 {
+                // Apple music treats non-existing playlist and empty playlist the same; 404
+                completion(nil, nil)
             }
             else{
                 self.sendErrorForHttpStatusCode(httpStatusCode, "taskForGetTracks", completion)
