@@ -69,11 +69,7 @@ class MKTrackClient: MKClient {
     }
     
     private func convertTracksToHttpBody(_ tracks: [MKTrack]) -> Data {
-        var tracksForRequest: [MKTrackForRequest] = Array()
-        for track in tracks {
-            tracksForRequest.append(track.forRequest())
-        }
-        let addTracksToPlaylistRequest = MKAddTracksToPlaylistRequest(data: tracksForRequest)
+        let addTracksToPlaylistRequest = MKAddTracksToPlaylistRequest(data: tracks)
         
         let encoder = JSONEncoder()
         return try! encoder.encode(addTracksToPlaylistRequest)

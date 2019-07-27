@@ -14,11 +14,8 @@ import UIKit
 
 class PlaylistCollectionVC: UIViewController {
     
-    private let PlaylistCellReuseIdentifier = "Cell"
-    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
-    @IBOutlet weak var playlistNameLabel: UILabel!
     
     var dataController: DataController!
     var playlists: [Playlist] = Array()
@@ -120,8 +117,6 @@ class PlaylistCollectionVC: UIViewController {
                 mkPlaylist.id == playlist.id!
             }
             
-            print("mkPlaylist: \(mkPlaylist.attributes.name), mkPlaylistNotInPlaylists? \(mkPlaylistNotInPlaylists)")
-            
             if (mkPlaylistNotInPlaylists) {
                 createPlaylist(from: mkPlaylist)
             }
@@ -151,8 +146,6 @@ class PlaylistCollectionVC: UIViewController {
             let currentDate = Date()
             let date20SecAfterCreated = playlist.created!.addingTimeInterval(20)
             let playlistIsExpired = currentDate > date20SecAfterCreated
-            
-            print("playlist: \(playlist.name), playlistNotInMKPlaylist? \(playlistNotInMKPlaylist), playlistIsExpired? \(playlistIsExpired)")
             
             if (playlistNotInMKPlaylist && playlistIsExpired) {
                 dataController.viewContext.delete(playlist)
@@ -257,7 +250,7 @@ extension PlaylistCollectionVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: PlaylistCellReuseIdentifier, for: indexPath)
+        return collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
     }
 }
 
@@ -302,5 +295,3 @@ extension PlaylistCollectionVC: UICollectionViewDelegate {
         self.present(controller, animated: true, completion: nil)
     }
 }
-
-

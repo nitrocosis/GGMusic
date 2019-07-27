@@ -37,6 +37,8 @@
 		29A7D52B22E3A42300A166B9 /* MKSearchClientSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A7D52A22E3A42300A166B9 /* MKSearchClientSupport.swift */; };
 		29A7D52D22E4230300A166B9 /* placeholder.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 29A7D52C22E4230300A166B9 /* placeholder.jpeg */; };
 		29A7D52F22E6ADFC00A166B9 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A7D52E22E6ADFC00A166B9 /* CollectionViewCell.swift */; };
+		29C6ABD522EBEFBD00272A7A /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C6ABD422EBEFBD00272A7A /* TableViewCell.swift */; };
+		29DD5D3822EAAD3E00D7DE76 /* SongListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DD5D3722EAAD3E00D7DE76 /* SongListState.swift */; };
 		66E784766AF982D425309805 /* libPods-GGMusic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 867961AFDD9E7547DA502CA9 /* libPods-GGMusic.a */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +76,8 @@
 		29A7D52A22E3A42300A166B9 /* MKSearchClientSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKSearchClientSupport.swift; sourceTree = "<group>"; };
 		29A7D52C22E4230300A166B9 /* placeholder.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = placeholder.jpeg; sourceTree = "<group>"; };
 		29A7D52E22E6ADFC00A166B9 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		29C6ABD422EBEFBD00272A7A /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		29DD5D3722EAAD3E00D7DE76 /* SongListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListState.swift; sourceTree = "<group>"; };
 		66CD4571B44E2D7F21BF2B84 /* Pods-GGMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GGMusic.debug.xcconfig"; path = "Target Support Files/Pods-GGMusic/Pods-GGMusic.debug.xcconfig"; sourceTree = "<group>"; };
 		867961AFDD9E7547DA502CA9 /* libPods-GGMusic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GGMusic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFF19C86E7FBC66821BFE76B /* Pods-GGMusic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GGMusic.release.xcconfig"; path = "Target Support Files/Pods-GGMusic/Pods-GGMusic.release.xcconfig"; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 				291BF6AE22BA824F009ACCF8 /* Assets.xcassets */,
 				291BF6B022BA824F009ACCF8 /* LaunchScreen.storyboard */,
 				29A7D52E22E6ADFC00A166B9 /* CollectionViewCell.swift */,
+				29C6ABD422EBEFBD00272A7A /* TableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -172,6 +177,7 @@
 				29A7D51D22E0E4B500A166B9 /* PlaylistState.swift */,
 				291BF6CA22BAD3E8009ACCF8 /* LoginVC.swift */,
 				2900809522E969FB0029AC70 /* ActivityIndicator.swift */,
+				29DD5D3722EAAD3E00D7DE76 /* SongListState.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -310,11 +316,13 @@
 				29A7D52422E168B200A166B9 /* MKTrackClient.swift in Sources */,
 				291BF6C722BAD358009ACCF8 /* DataController.swift in Sources */,
 				291BF6CB22BAD3E8009ACCF8 /* LoginVC.swift in Sources */,
+				29C6ABD522EBEFBD00272A7A /* TableViewCell.swift in Sources */,
 				29A7D52222E1686300A166B9 /* MKArtwork.swift in Sources */,
 				29A7D51422DEC85800A166B9 /* MKPlaylist.swift in Sources */,
 				291BF6A822BA824E009ACCF8 /* AppDelegate.swift in Sources */,
 				291BF6C922BAD3C4009ACCF8 /* SongListVC.swift in Sources */,
 				29A7D51222DC22A400A166B9 /* MusicKitSetup.swift in Sources */,
+				29DD5D3822EAAD3E00D7DE76 /* SongListState.swift in Sources */,
 				293B868222D50F1800ACDA78 /* GGMusic.xcdatamodeld in Sources */,
 				291BF6CF22BAD61D009ACCF8 /* Error.swift in Sources */,
 				29A7D51822DECB2300A166B9 /* MKConstants.swift in Sources */,

@@ -13,6 +13,11 @@ struct MKTrackResponse: Codable {
     let data: [MKTrack]
 }
 
+struct MKAddTracksToPlaylistRequest: Codable {
+    
+    let data: [MKTrack]
+}
+
 struct MKTrackSearchResponse: Codable {
     
     let results: MKTrackSearchResults
@@ -27,31 +32,13 @@ struct MKTrack: Codable {
     
     let id: String
     let type: String
-    let attributes: MKTrackAttributes
+    let attributes: MKTrackAttributes?
 }
 
 struct MKTrackAttributes: Codable {
     
     let name: String
-    let artistName: String
-    let albumName: String
-    let artwork: MKArtwork
-}
-
-struct MKAddTracksToPlaylistRequest: Codable {
-    
-    let data: [MKTrackForRequest]
-}
-
-struct MKTrackForRequest: Codable {
-    
-    let id: String
-    let type: String
-}
-
-extension MKTrack {
-    
-    func forRequest() -> MKTrackForRequest {
-        return MKTrackForRequest(id: id, type: type)
-    }
+    let artistName: String?
+    let albumName: String?
+    let artwork: MKArtwork?
 }
