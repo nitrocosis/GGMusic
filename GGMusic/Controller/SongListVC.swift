@@ -108,20 +108,28 @@ class SongListVC: UIViewController, UISearchBarDelegate {
         for mkTrack in mkTracks {
             let mkTrackNotInSongs = !playlist.song!.contains { (song) -> Bool in
                 let song = song as! Song
-                return mkTrack.id == song.id!
+                let catalogId = mkTrack.attributes?.playParams?.catalogId
+                
+                return catalogId == nil || catalogId == song.id!
             }
             
             if (mkTrackNotInSongs) {
-                let song = createSong(from: mkTrack)
+                let song = createSong(from: mkTrack, useCatalogId: true)
                 playlist.addToSong(song)
             }
         }
         savePlaylist()
     }
     
-    private func createSong(from mkTrack: MKTrack) -> Song {
+    private func createSong(from mkTrack: MKTrack, useCatalogId: Bool) -> Song {
         let song = Song(context: dataController.viewContext)
-        song.id = mkTrack.id
+        
+        if (useCatalogId) {
+            song.id = mkTrack.attributes?.playParams?.catalogId
+        } else {
+            song.id = mkTrack.id
+        }
+        
         song.albumName = mkTrack.attributes?.albumName
         song.artistName = mkTrack.attributes?.artistName
         song.created = Date()
@@ -136,10 +144,12 @@ class SongListVC: UIViewController, UISearchBarDelegate {
     }
     
     private func deleteExpiredSongs(_ mkTracks: [MKTrack]) {
-        for (index, song) in playlist.song!.enumerated() {
+        for song in playlist.song! {
             let song = song as! Song
             let songNotInMKTracks = !mkTracks.contains { (mkTrack) -> Bool in
-                song.id! == mkTrack.id
+                let catalogId = mkTrack.attributes?.playParams?.catalogId
+                
+                return catalogId == nil || catalogId == song.id!
             }
             
             let currentDate = Date()
@@ -205,17 +215,23 @@ class SongListVC: UIViewController, UISearchBarDelegate {
     }
     
     @IBAction func playButton(_ sender: Any) {
-        showMusicPlayerVC()
+        showMusicPlayerVC(playlist.song!.allObjects as! [Song], nil, nil, shuffle: false)
     }
     
     @IBAction func shuffleButton(_ sender: Any) {
-        showMusicPlayerVC()
+        let songs = playlist.song!.allObjects as! [Song]
+        let shuffledSongs = songs.shuffled()
+        showMusicPlayerVC(shuffledSongs, nil, nil, shuffle: true)
     }
     
-    private func showMusicPlayerVC() {
+    private func showMusicPlayerVC(_ songs: [Song]?, _ firstSongId: String?, _ mkTrack: MKTrack?, shuffle: Bool) {
         let controller = self.storyboard!.instantiateViewController(withIdentifier: "MusicPlayerVC")
         let musicPlayerVC = controller as! MusicPlayerVC
         
+        musicPlayerVC.songs = songs
+        musicPlayerVC.firstSongId = firstSongId
+        musicPlayerVC.mkTrack = mkTrack
+        musicPlayerVC.shuffle = shuffle
         musicPlayerVC.modalPresentationStyle = .pageSheet
         
         self.present(controller, animated: true, completion: nil)
@@ -231,7 +247,7 @@ class SongListVC: UIViewController, UISearchBarDelegate {
 extension SongListVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (searchResults != nil && !searchResults!.isEmpty) {
+        if (searchResults != nil) {
             return searchResults!.count
         }
         return playlist.song!.count
@@ -251,7 +267,7 @@ extension SongListVC: UITableViewDelegate {
         tableViewCell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapCell(_:))))
         tableViewCell.addButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapAddButton(_:))))
         
-        if (searchResults != nil && !searchResults!.isEmpty) {
+        if (searchResults != nil) {
             let mkTrack = searchResults![indexPath.row]
             loadTableViewCell(with: mkTrack, tableViewCell)
         } else {
@@ -301,14 +317,19 @@ extension SongListVC: UITableViewDelegate {
     }
     
     @objc func tapCell(_ sender: UITapGestureRecognizer) {
-        showMusicPlayerVC()
+        if (searchResults != nil) {
+            let mkTrack = getMKTrack(from: sender)
+            showMusicPlayerVC(nil, nil, mkTrack, shuffle: false)
+        } else {
+            let songs = playlist.song!.allObjects as! [Song]
+            let index = getIndex(from: sender)
+            let firstSongId = songs[index].id!
+            showMusicPlayerVC(songs, firstSongId, nil, shuffle: false)
+        }
     }
     
     @objc func tapAddButton(_ sender: UITapGestureRecognizer) {
-        let location = sender.location(in: self.tableView)
-        let indexPath = self.tableView.indexPathForRow(at: location)!
-        let index = indexPath.section + indexPath.row
-        let mkTrack = searchResults![index] as MKTrack
+        let mkTrack = getMKTrack(from: sender)
         
         showActivityIndicator()
         MKTrackClient.shared.addTracks(playlistId: playlist.id!, tracks: [mkTrack]) { (trackResponse, error) in
@@ -317,12 +338,25 @@ extension SongListVC: UITableViewDelegate {
                 if (error != nil) {
                     self.displayError(error!.description)
                 } else {
-                    let song = self.createSong(from: mkTrack)
+                    let song = self.createSong(from: mkTrack, useCatalogId: false)
                     self.playlist.addToSong(song)
                     self.savePlaylist()
                     self.displaySuccess()
                 }
             }
         }
+    }
+    
+    private func getIndex(from sender: UITapGestureRecognizer) -> Int {
+        let location = sender.location(in: self.tableView)
+        let indexPath = self.tableView.indexPathForRow(at: location)!
+        let index = indexPath.section + indexPath.row
+        return index
+    }
+    
+    private func getMKTrack(from sender: UITapGestureRecognizer) -> MKTrack {
+        let index = getIndex(from: sender)
+        let mkTrack = searchResults![index] as MKTrack
+        return mkTrack
     }
 }

@@ -41,4 +41,10 @@ struct MKTrackAttributes: Codable {
     let artistName: String?
     let albumName: String?
     let artwork: MKArtwork?
+    let playParams: MKTrackPlayParams?
+}
+
+struct MKTrackPlayParams: Codable {
+    
+    let catalogId: String?
 }
