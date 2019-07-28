@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-//Shuffle and play buttons. list of songs in playlist. search bar allows you to search for spotify songs and add to current playlist.
 
 class SongListVC: UIViewController, UISearchBarDelegate {
     
@@ -195,20 +194,31 @@ class SongListVC: UIViewController, UISearchBarDelegate {
         }
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        // TODO
-    }
-    
     @IBAction func cancelButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        if (searchResults != nil) {
+            searchResults = nil
+            searchBar.text = nil
+            tableView.reloadData()
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func playButton(_ sender: Any) {
-        // TODO
+        showMusicPlayerVC()
     }
     
     @IBAction func shuffleButton(_ sender: Any) {
-        // TODO
+        showMusicPlayerVC()
+    }
+    
+    private func showMusicPlayerVC() {
+        let controller = self.storyboard!.instantiateViewController(withIdentifier: "MusicPlayerVC")
+        let musicPlayerVC = controller as! MusicPlayerVC
+        
+        musicPlayerVC.modalPresentationStyle = .pageSheet
+        
+        self.present(controller, animated: true, completion: nil)
     }
     
     private func setupTableView() {
@@ -235,9 +245,11 @@ extension SongListVC: UITableViewDataSource {
 extension SongListVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(_:))))
         
         let tableViewCell = cell as! TableViewCell
+        
+        tableViewCell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapCell(_:))))
+        tableViewCell.addButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapAddButton(_:))))
         
         if (searchResults != nil && !searchResults!.isEmpty) {
             let mkTrack = searchResults![indexPath.row]
@@ -249,8 +261,8 @@ extension SongListVC: UITableViewDelegate {
         }
     }
     
-    // TODO Hide add button in cell.
     private func loadTableViewCell(with song: Song, _ tableViewCell: TableViewCell) {
+        tableViewCell.addButton.isHidden = true
         tableViewCell.songName.text = song.name
         tableViewCell.artistName.text = song.artistName
         
@@ -272,8 +284,8 @@ extension SongListVC: UITableViewDelegate {
         }
     }
     
-    // TODO Show add button in cell.
     private func loadTableViewCell(with mkTrack: MKTrack, _ tableViewCell: TableViewCell) {
+        tableViewCell.addButton.isHidden = false
         tableViewCell.songName.text = mkTrack.attributes?.name
         tableViewCell.artistName.text = mkTrack.attributes?.artistName
         
@@ -288,7 +300,29 @@ extension SongListVC: UITableViewDelegate {
             }.resume()
     }
     
-    @objc func tap(_ sender: UITapGestureRecognizer) {
-        // TODO
+    @objc func tapCell(_ sender: UITapGestureRecognizer) {
+        showMusicPlayerVC()
+    }
+    
+    @objc func tapAddButton(_ sender: UITapGestureRecognizer) {
+        let location = sender.location(in: self.tableView)
+        let indexPath = self.tableView.indexPathForRow(at: location)!
+        let index = indexPath.section + indexPath.row
+        let mkTrack = searchResults![index] as MKTrack
+        
+        showActivityIndicator()
+        MKTrackClient.shared.addTracks(playlistId: playlist.id!, tracks: [mkTrack]) { (trackResponse, error) in
+            DispatchQueue.main.async {
+                self.dismissActivityIndicator()
+                if (error != nil) {
+                    self.displayError(error!.description)
+                } else {
+                    let song = self.createSong(from: mkTrack)
+                    self.playlist.addToSong(song)
+                    self.savePlaylist()
+                    self.displaySuccess()
+                }
+            }
+        }
     }
 }

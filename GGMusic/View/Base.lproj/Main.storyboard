@@ -214,9 +214,15 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHZ-Ab-AKl">
+                                                    <rect key="frame" x="306" y="12" width="54" height="34"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Add"/>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="addButton" destination="vHZ-Ab-AKl" id="NuL-bu-2C8"/>
                                             <outlet property="artistName" destination="gbE-eK-nmy" id="OhG-qQ-1yD"/>
                                             <outlet property="songImage" destination="naE-Zf-FEP" id="iGD-qh-oWp"/>
                                             <outlet property="songName" destination="gMk-f8-3m5" id="bpQ-VY-VY7"/>
@@ -269,7 +275,7 @@
         <!--Music PlayerVC-->
         <scene sceneID="sfw-Rq-Iyc">
             <objects>
-                <viewController id="zoi-36-riE" customClass="MusicPlayerVC" customModule="GGMusic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MusicPlayerVC" id="zoi-36-riE" customClass="MusicPlayerVC" customModule="GGMusic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SRU-BP-R4h">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -319,7 +325,7 @@
                                         </subviews>
                                     </stackView>
                                     <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="GPH-Iz-HOT">
-                                        <rect key="frame" x="49.5" y="472" width="162" height="31"/>
+                                        <rect key="frame" x="47.5" y="472" width="166" height="31"/>
                                     </slider>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4wD-ni-gPK">
                                         <rect key="frame" x="107.5" y="552" width="46" height="30"/>

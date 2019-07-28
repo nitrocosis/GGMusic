@@ -7,12 +7,10 @@
 //
 
 import UIKit
+import MediaPlayer
 
-class MusicPlayerVC
-: UIViewController {
+class MusicPlayerVC: UIViewController {
     
-    //music player, with option to change background to provided background pictures or upload own background.
-
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var songArtistLabel: UILabel!
@@ -23,13 +21,8 @@ class MusicPlayerVC
     @IBOutlet weak var volumeSlider: UISlider!
     @IBOutlet weak var changeBackgroundButton: UIButton!
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
 }
 
