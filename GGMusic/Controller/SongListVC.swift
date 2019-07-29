@@ -16,13 +16,17 @@ class SongListVC: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var playlistTitleLabel: UILabel!
     @IBOutlet weak var nowPlayingMainView: UIView!
     @IBOutlet weak var nowPlayingImageView: UIImageView!
-    @IBOutlet weak var nowPlayingSongTitle: UILabel!
+    @IBOutlet weak var nowPlayingTitleLabel: UILabel!
     @IBOutlet weak var nowPlayingPlayButton: UIButton!
     @IBOutlet weak var nowPlayingNextButton: UIButton!
+    
+    private var nowPlayingMainViewTapGestureRecognizer: UIGestureRecognizer!
     
     var dataController: DataController!
     var playlist: Playlist!
     var searchResults: [MKTrack]?
+    
+    let player = MKPlayer()
     
     var state = SongListState.loading {
         didSet {
@@ -59,6 +63,8 @@ class SongListVC: UIViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setPlayerViews()
+        
         playlistTitleLabel.text = playlist.name
         searchBar.delegate = self
         
@@ -69,6 +75,21 @@ class SongListVC: UIViewController, UISearchBarDelegate {
         
         // Then get songs of the playlists from network to get updated playlists.
         getSongs()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        player.setupPlayer()
+        
+        nowPlayingMainViewTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(nowPlayingMainViewTapped(_:)))
+        nowPlayingMainView.addGestureRecognizer(nowPlayingMainViewTapGestureRecognizer)
+        nowPlayingMainView.isHidden = !player.hasNowPlayingItem()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        player.releasePlayer()
+        nowPlayingMainView.removeGestureRecognizer(nowPlayingMainViewTapGestureRecognizer)
     }
     
     private func showSongs() {
@@ -120,17 +141,22 @@ class SongListVC: UIViewController, UISearchBarDelegate {
             
             if (mkTrackNotInSongs) {
                 let song = createSong(from: mkTrack, useCatalogId: true)
-                playlist.addToSong(song)
+                if (song != nil) {
+                    playlist.addToSong(song!)
+                }
             }
         }
         savePlaylist()
     }
     
-    private func createSong(from mkTrack: MKTrack, useCatalogId: Bool) -> Song {
+    private func createSong(from mkTrack: MKTrack, useCatalogId: Bool) -> Song? {
         let song = Song(context: dataController.viewContext)
         
         if (useCatalogId) {
             song.id = mkTrack.attributes?.playParams?.catalogId
+            if (song.id == nil) {
+                return nil
+            }
         } else {
             song.id = mkTrack.id
         }
@@ -232,7 +258,11 @@ class SongListVC: UIViewController, UISearchBarDelegate {
         showMusicPlayerVC(shuffledSongIds, nil)
     }
     
-    private func showMusicPlayerVC(_ songIds: [String], _ firstSongId: String?) {
+    @objc func nowPlayingMainViewTapped(_ sender: UITapGestureRecognizer) {
+        showMusicPlayerVC(nil, nil)
+    }
+    
+    private func showMusicPlayerVC(_ songIds: [String]?, _ firstSongId: String?) {
         let controller = self.storyboard!.instantiateViewController(withIdentifier: "MusicPlayerVC")
         let musicPlayerVC = controller as! MusicPlayerVC
         
@@ -247,6 +277,13 @@ class SongListVC: UIViewController, UISearchBarDelegate {
         tableView.dataSource = self as UITableViewDataSource
         tableView.delegate = self as UITableViewDelegate
         tableView.allowsMultipleSelection = false
+    }
+    
+    private func setPlayerViews() {
+        player.imageView = nowPlayingImageView
+        player.songTitleLabel = nowPlayingTitleLabel
+        player.playSongButton = nowPlayingPlayButton
+        player.nextSongButton = nowPlayingNextButton
     }
 }
 
@@ -331,7 +368,7 @@ extension SongListVC: UITableViewDelegate {
             let songIds = songs.map { (song: Song) -> String in song.id! }
             let index = getIndex(from: sender)
             let firstSongId = songs[index].id!
-            showMusicPlayerVC(songIds, firstSongId)
+            player.play(songIds: songIds, firstSongId: firstSongId)
         }
     }
     
@@ -346,9 +383,11 @@ extension SongListVC: UITableViewDelegate {
                     self.displayError(error!.description)
                 } else {
                     let song = self.createSong(from: mkTrack, useCatalogId: false)
-                    self.playlist.addToSong(song)
-                    self.savePlaylist()
-                    self.displaySuccess()
+                    if (song != nil) {
+                        self.playlist.addToSong(song!)
+                        self.savePlaylist()
+                        self.displaySuccess()
+                    }
                 }
             }
         }

@@ -6,6 +6,7 @@
 //  Copyright © 2019 Sarah Rebecca Estrellado. All rights reserved.
 //
 
+import CoreGraphics
 import MediaPlayer
 import UIKit
 
@@ -17,7 +18,10 @@ class MKPlayer {
     var previousSongButton: UIButton?
     var playSongButton: UIButton?
     var nextSongButton: UIButton?
-    var volumeSlider: UISlider?
+    
+    private var previousTapGestureRecognizer: UIGestureRecognizer!
+    private var playTapGestureRecognizer: UIGestureRecognizer!
+    private var nextTapGestureRecognizer: UIGestureRecognizer!
     
     private var player: MPMusicPlayerController!
     private var playbackStateChangedObserver: NSObjectProtocol?
@@ -42,12 +46,16 @@ class MKPlayer {
                 self.nowPlayingItemChanged()
         }
         
-        volumeChangedObserver = NotificationCenter.default.addObserver(
-            forName: NSNotification.Name.MPMusicPlayerControllerVolumeDidChange,
-            object: player,
-            queue: nil) { (notification) in
-                self.volumeChanged()
-        }
+        previousTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(previousButtonTapped(_:)))
+        playTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(playButtonTapped(_:)))
+        nextTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(nextButtonTapped(_:)))
+        
+        previousSongButton?.addGestureRecognizer(previousTapGestureRecognizer)
+        playSongButton?.addGestureRecognizer(playTapGestureRecognizer)
+        nextSongButton?.addGestureRecognizer(nextTapGestureRecognizer)
+        
+        populateViewsWithNowPlayingItem()
+        updatePlayButtonState()
     }
     
     func releasePlayer() {
@@ -65,11 +73,13 @@ class MKPlayer {
             object: nil
         )
         
-        NotificationCenter.default.removeObserver(
-            volumeChangedObserver as Any,
-            name: NSNotification.Name.MPMusicPlayerControllerVolumeDidChange,
-            object: nil
-        )
+        previousSongButton?.removeGestureRecognizer(previousTapGestureRecognizer)
+        playSongButton?.removeGestureRecognizer(playTapGestureRecognizer)
+        nextSongButton?.removeGestureRecognizer(nextTapGestureRecognizer)
+    }
+    
+    func hasNowPlayingItem() -> Bool {
+        return player.nowPlayingItem != nil
     }
     
     func play(songIds: [String], firstSongId: String?) {
@@ -80,18 +90,49 @@ class MKPlayer {
         player.play()
     }
     
+    @objc func previousButtonTapped(_ sender: UITapGestureRecognizer) {
+        player.skipToPreviousItem()
+    }
+    
+    @objc func playButtonTapped(_ sender: UITapGestureRecognizer) {
+        switch player.playbackState {
+        case .playing:
+            player.pause()
+        default:
+            player.play()
+        }
+    }
+    
+    @objc func nextButtonTapped(_ sender: UITapGestureRecognizer) {
+        player.skipToNextItem()
+    }
+    
     private func playbackStateChanged() {
-        // TODO
-        print("PLAYBACK STATE CHANGED: \(player.playbackState)")
+        updatePlayButtonState()
     }
     
     private func nowPlayingItemChanged() {
-        // TODO
-        print("NOW PLAYING ITEM CHANGED: \(player.nowPlayingItem?.artwork)")
+        populateViewsWithNowPlayingItem()
     }
     
-    private func volumeChanged() {
-        // TODO
-        print("VOLUME CHANGED: \(AVAudioSession.sharedInstance().outputVolume)")
+    private func updatePlayButtonState() {
+        switch player.playbackState {
+        case .playing:
+            playSongButton?.setTitle("Pause", for: .normal)
+        default:
+            playSongButton?.setTitle("Play", for: .normal)
+        }
+    }
+    
+    private func populateViewsWithNowPlayingItem() {
+        guard let nowPlayingItem = player.nowPlayingItem else { return }
+        
+        if (imageView != nil) {
+            let imageViewSize = CGSize(width: imageView!.frame.width, height: imageView!.frame.height)
+            imageView!.image = nowPlayingItem.artwork?.image(at: imageViewSize)
+        }
+        
+        songArtistLabel?.text = nowPlayingItem.artist
+        songTitleLabel?.text = nowPlayingItem.title
     }
 }

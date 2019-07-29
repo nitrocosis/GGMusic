@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MediaPlayer
 
 class MusicPlayerVC: UIViewController {
     
@@ -16,7 +17,7 @@ class MusicPlayerVC: UIViewController {
     @IBOutlet weak var previousSongButton: UIButton!
     @IBOutlet weak var playSongButton: UIButton!
     @IBOutlet weak var nextSongButton: UIButton!
-    @IBOutlet weak var volumeSlider: UISlider!
+    @IBOutlet weak var volumeSliderContainer: UIView!
     
     var songIds: [String]?
     var firstSongId: String?
@@ -25,19 +26,16 @@ class MusicPlayerVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        player.imageView = imageView
-        player.songArtistLabel = songArtistLabel
-        player.songTitleLabel = songTitleLabel
-        player.previousSongButton = previousSongButton
-        player.playSongButton = playSongButton
-        player.nextSongButton = nextSongButton
-        player.volumeSlider = volumeSlider
+        setPlayerViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         player.setupPlayer()
-        player.play(songIds: songIds!, firstSongId: firstSongId)
+        
+        if (songIds != nil) {
+            player.play(songIds: songIds!, firstSongId: firstSongId)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -47,5 +45,17 @@ class MusicPlayerVC: UIViewController {
     
     @IBAction func cancelButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    private func setPlayerViews() {
+        player.imageView = imageView
+        player.songArtistLabel = songArtistLabel
+        player.songTitleLabel = songTitleLabel
+        player.previousSongButton = previousSongButton
+        player.playSongButton = playSongButton
+        player.nextSongButton = nextSongButton
+        
+        let volumeSlider = MPVolumeView(frame: volumeSliderContainer.bounds)
+        volumeSliderContainer.addSubview(volumeSlider)
     }
 }

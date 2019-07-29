@@ -22,8 +22,12 @@ class PlaylistCollectionVC: UIViewController {
     @IBOutlet weak var nowPlayingNextButton: UIButton!
     @IBOutlet weak var nowPlayingMainView: UIView!
     
+    private var nowPlayingMainViewTapGestureRecognizer: UIGestureRecognizer!
+    
     var dataController: DataController!
     var playlists: [Playlist] = Array()
+    
+    let player = MKPlayer()
     
     var state = PlaylistState.loading {
         didSet {
@@ -62,6 +66,8 @@ class PlaylistCollectionVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setPlayerViews()
+        
         setupCollectionView()
         
         // Immediately show playlists in core data, if any.
@@ -69,6 +75,21 @@ class PlaylistCollectionVC: UIViewController {
         
         // Then get playlists from network to get updated playlists.
         getPlaylists()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        player.setupPlayer()
+        
+        nowPlayingMainViewTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(nowPlayingMainViewTapped(_:)))
+        nowPlayingMainView.addGestureRecognizer(nowPlayingMainViewTapGestureRecognizer)
+        nowPlayingMainView.isHidden = !player.hasNowPlayingItem()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        player.releasePlayer()
+        nowPlayingMainView.removeGestureRecognizer(nowPlayingMainViewTapGestureRecognizer)
     }
     
     private func showPlaylists() {
@@ -173,6 +194,19 @@ class PlaylistCollectionVC: UIViewController {
         presentNewPlaylistAlert()
     }
     
+    @objc func nowPlayingMainViewTapped(_ sender: UITapGestureRecognizer) {
+        showMusicPlayerVC()
+    }
+    
+    private func showMusicPlayerVC() {
+        let controller = self.storyboard!.instantiateViewController(withIdentifier: "MusicPlayerVC")
+        let musicPlayerVC = controller as! MusicPlayerVC
+        
+        musicPlayerVC.modalPresentationStyle = .pageSheet
+        
+        self.present(controller, animated: true, completion: nil)
+    }
+    
     func presentNewPlaylistAlert() {
         let alert = UIAlertController(title: "New Playlist", message: "Enter a name for this playlist", preferredStyle: .alert)
         
@@ -245,6 +279,13 @@ class PlaylistCollectionVC: UIViewController {
                                                    left: itemsPadding,
                                                    bottom: itemsPadding,
                                                    right: itemsPadding)
+    }
+    
+    private func setPlayerViews() {
+        player.imageView = nowPlayingImageView
+        player.songTitleLabel = nowPlayingTitleLabel
+        player.playSongButton = nowPlayingPlayButton
+        player.nextSongButton = nowPlayingNextButton
     }
 }
 
