@@ -38,6 +38,7 @@
 		29A7D52D22E4230300A166B9 /* placeholder.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 29A7D52C22E4230300A166B9 /* placeholder.jpeg */; };
 		29A7D52F22E6ADFC00A166B9 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A7D52E22E6ADFC00A166B9 /* CollectionViewCell.swift */; };
 		29C6ABD522EBEFBD00272A7A /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C6ABD422EBEFBD00272A7A /* TableViewCell.swift */; };
+		29C6ABD722EE9BEC00272A7A /* MKPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C6ABD622EE9BEC00272A7A /* MKPlayer.swift */; };
 		29DD5D3822EAAD3E00D7DE76 /* SongListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DD5D3722EAAD3E00D7DE76 /* SongListState.swift */; };
 		66E784766AF982D425309805 /* libPods-GGMusic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 867961AFDD9E7547DA502CA9 /* libPods-GGMusic.a */; };
 /* End PBXBuildFile section */
@@ -77,6 +78,7 @@
 		29A7D52C22E4230300A166B9 /* placeholder.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = placeholder.jpeg; sourceTree = "<group>"; };
 		29A7D52E22E6ADFC00A166B9 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		29C6ABD422EBEFBD00272A7A /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		29C6ABD622EE9BEC00272A7A /* MKPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKPlayer.swift; sourceTree = "<group>"; };
 		29DD5D3722EAAD3E00D7DE76 /* SongListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListState.swift; sourceTree = "<group>"; };
 		66CD4571B44E2D7F21BF2B84 /* Pods-GGMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GGMusic.debug.xcconfig"; path = "Target Support Files/Pods-GGMusic/Pods-GGMusic.debug.xcconfig"; sourceTree = "<group>"; };
 		867961AFDD9E7547DA502CA9 /* libPods-GGMusic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GGMusic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,6 +201,7 @@
 				29A7D52522E169CE00A166B9 /* MKTrackClientSupport.swift */,
 				29A7D52822E3A22D00A166B9 /* MKSearchClient.swift */,
 				29A7D52A22E3A42300A166B9 /* MKSearchClientSupport.swift */,
+				29C6ABD622EE9BEC00272A7A /* MKPlayer.swift */,
 			);
 			path = MusicKit;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				29DD5D3822EAAD3E00D7DE76 /* SongListState.swift in Sources */,
 				293B868222D50F1800ACDA78 /* GGMusic.xcdatamodeld in Sources */,
 				291BF6CF22BAD61D009ACCF8 /* Error.swift in Sources */,
+				29C6ABD722EE9BEC00272A7A /* MKPlayer.swift in Sources */,
 				29A7D51822DECB2300A166B9 /* MKConstants.swift in Sources */,
 				29A7D51622DECB0100A166B9 /* MKPlaylistClient.swift in Sources */,
 				29A7D51022D8302600A166B9 /* MusicKitConfig.swift in Sources */,

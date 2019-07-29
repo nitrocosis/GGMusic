@@ -16,6 +16,11 @@ class PlaylistCollectionVC: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    @IBOutlet weak var nowPlayingImageView: UIImageView!
+    @IBOutlet weak var nowPlayingTitleLabel: UILabel!
+    @IBOutlet weak var nowPlayingPlayButton: UIButton!
+    @IBOutlet weak var nowPlayingNextButton: UIButton!
+    @IBOutlet weak var nowPlayingMainView: UIView!
     
     var dataController: DataController!
     var playlists: [Playlist] = Array()

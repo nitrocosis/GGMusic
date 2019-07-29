@@ -14,6 +14,11 @@ class SongListVC: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var playlistTitleLabel: UILabel!
+    @IBOutlet weak var nowPlayingMainView: UIView!
+    @IBOutlet weak var nowPlayingImageView: UIImageView!
+    @IBOutlet weak var nowPlayingSongTitle: UILabel!
+    @IBOutlet weak var nowPlayingPlayButton: UIButton!
+    @IBOutlet weak var nowPlayingNextButton: UIButton!
     
     var dataController: DataController!
     var playlist: Playlist!
