@@ -21,10 +21,9 @@ class MusicPlayerVC: UIViewController {
     @IBOutlet weak var volumeSlider: UISlider!
     @IBOutlet weak var changeBackgroundButton: UIButton!
     
-    var songs: [Song]?
+    // TODO only need to pass in array of ids!!!
+    var songIds: [String]?
     var firstSongId: String?
-    var mkTrack: MKTrack?
-    var shuffle: Bool!
     
     private var player: MPMusicPlayerController!
     
@@ -48,15 +47,7 @@ class MusicPlayerVC: UIViewController {
     }
     
     private func playSongs() {
-        let songIds: [String]!
-        
-        if (songs != nil) {
-            songIds = songs!.map { (song: Song) -> String in song.id! }
-        } else {
-            songIds = [mkTrack!.id]
-        }
-        
-        let queue  = MPMusicPlayerStoreQueueDescriptor(storeIDs: songIds)
+        let queue  = MPMusicPlayerStoreQueueDescriptor(storeIDs: songIds!)
         queue.startItemID = firstSongId
         
         player.setQueue(with: queue)
@@ -70,7 +61,7 @@ class MusicPlayerVC: UIViewController {
     
     private func nowPlayingItemChanged() {
         // TODO
-        print("NOW PLAYING ITEM CHANGED: \(player.nowPlayingItem)")
+        print("NOW PLAYING ITEM CHANGED: \(player.nowPlayingItem?.artwork)")
     }
     
     private func volumeChanged() {

@@ -215,23 +215,24 @@ class SongListVC: UIViewController, UISearchBarDelegate {
     }
     
     @IBAction func playButton(_ sender: Any) {
-        showMusicPlayerVC(playlist.song!.allObjects as! [Song], nil, nil, shuffle: false)
+        let songs = playlist.song!.allObjects as! [Song]
+        let songIds = songs.map { (song: Song) -> String in song.id! }
+        showMusicPlayerVC(songIds, nil)
     }
     
     @IBAction func shuffleButton(_ sender: Any) {
         let songs = playlist.song!.allObjects as! [Song]
-        let shuffledSongs = songs.shuffled()
-        showMusicPlayerVC(shuffledSongs, nil, nil, shuffle: true)
+        let songIds = songs.map { (song: Song) -> String in song.id! }
+        let shuffledSongIds = songIds.shuffled()
+        showMusicPlayerVC(shuffledSongIds, nil)
     }
     
-    private func showMusicPlayerVC(_ songs: [Song]?, _ firstSongId: String?, _ mkTrack: MKTrack?, shuffle: Bool) {
+    private func showMusicPlayerVC(_ songIds: [String], _ firstSongId: String?) {
         let controller = self.storyboard!.instantiateViewController(withIdentifier: "MusicPlayerVC")
         let musicPlayerVC = controller as! MusicPlayerVC
         
-        musicPlayerVC.songs = songs
+        musicPlayerVC.songIds = songIds
         musicPlayerVC.firstSongId = firstSongId
-        musicPlayerVC.mkTrack = mkTrack
-        musicPlayerVC.shuffle = shuffle
         musicPlayerVC.modalPresentationStyle = .pageSheet
         
         self.present(controller, animated: true, completion: nil)
@@ -319,12 +320,13 @@ extension SongListVC: UITableViewDelegate {
     @objc func tapCell(_ sender: UITapGestureRecognizer) {
         if (searchResults != nil) {
             let mkTrack = getMKTrack(from: sender)
-            showMusicPlayerVC(nil, nil, mkTrack, shuffle: false)
+            showMusicPlayerVC([mkTrack.id], nil)
         } else {
             let songs = playlist.song!.allObjects as! [Song]
+            let songIds = songs.map { (song: Song) -> String in song.id! }
             let index = getIndex(from: sender)
             let firstSongId = songs[index].id!
-            showMusicPlayerVC(songs, firstSongId, nil, shuffle: false)
+            showMusicPlayerVC(songIds, firstSongId)
         }
     }
     

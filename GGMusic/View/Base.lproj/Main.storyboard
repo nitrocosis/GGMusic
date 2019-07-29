@@ -190,11 +190,11 @@
                                 <rect key="frame" x="0.0" y="226" width="375" height="441"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="60" id="trk-H8-FLw" customClass="TableViewCell" customModule="GGMusic" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="83" id="trk-H8-FLw" customClass="TableViewCell" customModule="GGMusic" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="83"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="trk-H8-FLw" id="Wkm-pk-Fbj">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="82.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholder.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="naE-Zf-FEP">
@@ -208,6 +208,11 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHZ-Ab-AKl">
+                                                    <rect key="frame" x="306" y="12" width="54" height="34"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Add"/>
+                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbE-eK-nmy">
                                                     <rect key="frame" x="74" y="31" width="272" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -215,11 +220,6 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHZ-Ab-AKl">
-                                                    <rect key="frame" x="306" y="12" width="54" height="34"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Add"/>
-                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -317,32 +317,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lQQ-FX-qh9">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="GG Music" id="Wpj-Au-gcH">
-                                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="ewY-jO-oth">
-                                            <connections>
-                                                <action selector="cancelButton:" destination="zoi-36-riE" id="Gbk-70-nDJ"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="placeholder.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="hZx-kH-fjW">
-                                <rect key="frame" x="39" y="93" width="296" height="143"/>
+                                <rect key="frame" x="39" y="131" width="296" height="143"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="rMl-2W-kBD">
-                                <rect key="frame" x="56" y="254" width="270" height="341"/>
+                                <rect key="frame" x="48" y="356" width="290" height="209"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jSd-N8-vx0">
-                                        <rect key="frame" x="60" y="0.0" width="150" height="2"/>
-                                    </progressView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Tau-aJ-OLJ">
-                                        <rect key="frame" x="114.5" y="52" width="41.5" height="49"/>
+                                        <rect key="frame" x="124.5" y="0.0" width="41.5" height="49"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lje-Om-cxA">
                                                 <rect key="frame" x="0.0" y="0.0" width="41.5" height="20.5"/>
@@ -359,7 +343,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="ebb-2P-71t">
-                                        <rect key="frame" x="38.5" y="151" width="193" height="30"/>
+                                        <rect key="frame" x="48.5" y="99" width="193" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hze-46-bLh">
                                                 <rect key="frame" x="0.0" y="0.0" width="59" height="30"/>
@@ -376,25 +360,32 @@
                                         </subviews>
                                     </stackView>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="GPH-Iz-HOT">
-                                        <rect key="frame" x="-2" y="231" width="274" height="31"/>
+                                        <rect key="frame" x="-2" y="179" width="294" height="31"/>
                                     </slider>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4wD-ni-gPK">
-                                        <rect key="frame" x="112" y="311" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
                                 </subviews>
                             </stackView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lQQ-FX-qh9">
+                                <rect key="frame" x="0.0" y="30" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="GG Music" id="Wpj-Au-gcH">
+                                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="ewY-jO-oth">
+                                            <connections>
+                                                <action selector="cancelButton:" destination="zoi-36-riE" id="Gbk-70-nDJ"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="f0v-he-gPe"/>
                     </view>
                     <connections>
-                        <outlet property="changeBackgroundButton" destination="4wD-ni-gPK" id="WG2-Ca-XaG"/>
                         <outlet property="imageView" destination="hZx-kH-fjW" id="Ni9-ZV-sve"/>
                         <outlet property="nextSongButton" destination="lHs-Dr-e2C" id="sJo-QY-h0q"/>
                         <outlet property="playSongButton" destination="WDx-jf-S9N" id="SeT-vt-Yeh"/>
                         <outlet property="previousSongButton" destination="Hze-46-bLh" id="bh7-i4-EyU"/>
-                        <outlet property="progressBar" destination="jSd-N8-vx0" id="wmf-JE-PUr"/>
                         <outlet property="songArtistLabel" destination="Lje-Om-cxA" id="MZ3-6b-E9M"/>
                         <outlet property="songTitleLabel" destination="S4j-UM-3Yg" id="4Mm-t3-vBV"/>
                         <outlet property="volumeSlider" destination="GPH-Iz-HOT" id="qEo-Ju-WBt"/>
