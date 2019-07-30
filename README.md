@@ -1,9 +1,15 @@
 #  GG Music
 
+## Description
+
+GG music is a music streaming app that downloads your playlists from Apple music, lets you build your own playlists, allows you to add songs using Search and play music using a music player.
+
 ## Running the App
 
 1. This app will not work on an emulator. A real device is required.
 2. This app requires that the "iCloud Music Library" setting is enabled.
+3. The app requires an Apple Music account, and will redirect you to a 3 month free trial if no subscription exists.
+4. This app requires Apple music installed on the device.
 
 ## Known Issues
 
